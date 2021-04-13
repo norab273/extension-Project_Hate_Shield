@@ -1,0 +1,14 @@
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 6.6vh;
+}
+::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background-image: url("image_1.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
