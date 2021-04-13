@@ -8,7 +8,17 @@
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb {
-  background-image: url("image_1.png");
+  background-image: url("images/image_1.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
+}
+
+/* cursor */
+
+html {
+  cursor: url("images/icon.PNG"), auto;
+}
+
+body {
+  background-color: blueviolet;
 }
