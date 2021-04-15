@@ -104,6 +104,14 @@ dictionary.set("vieille-peau", "🌸");
 dictionary.set("youpin", "🌸");
 dictionary.set("youpine", "🌸");
 
+browser.runtime.onMessage.addListener(addToDictionary);
+
+function addToDictionary(request) {
+  if (request.color) {
+    dictionary.set('"' + request.color + '"', "🌸");
+  }
+}
+
 /*
  * After all the dictionary entries have been set, sort them by length.
  *
