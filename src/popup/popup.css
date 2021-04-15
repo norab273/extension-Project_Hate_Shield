@@ -6,23 +6,37 @@
 
 html {
   font-family: sans-serif;
-  font-size: 10px;
-  background: rgb(150, 150, 150);
-  height: 150px;
+  font-size: 20px;
+  background: #ffffff;
+  height: 250px;
   margin: 0;
 }
 
 body {
-  width: 208px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
   margin: 0 auto;
   height: inherit;
 }
-
-.bg-container button {
-  display: inline-block;
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.cursor-container button {
   width: 50px;
   height: 50px;
   margin: 1px;
+}
+
+.women,
+.lgbt,
+.blm,
+.handicap {
+  background-position: center;
+  background-color: white;
 }
 
 .color-reset {
@@ -30,11 +44,15 @@ body {
   height: 20px;
 }
 
-input,
+input {
+  width: 150px;
+  height: 30px;
+}
+
 .color-reset button {
   display: block;
+  border-radius: 10px;
   width: 48%;
   height: 110%;
-  float: left;
-  margin: 0 1% 1% 1%;
+  margin: 5% 1% 1% 1%;
 }

@@ -7,10 +7,11 @@ function updateBg(request, sender, sendResponse) {
   if (request.image) {
     html.style.cursor = "url(" + request.image + "), auto";
     body.style.cursor = "url(" + request.image + "),, auto";
-  } else if (request.tab) {
-    html.style.scrollbarColor = "red";
-    html.style.MozScrollbarTrack = "background-color: rgb(46, 87, 221)";
-  } else if (request.color) {
+  }
+  //else if (request.tab) {
+  //   html.style.scrollbarColor = "red";
+  //   html.style.MozScrollbarTrack = "background-color: rgb(46, 87, 221)";}
+  else if (request.color) {
     html.style.backgroundColor = request.color;
     body.style.backgroundColor = request.color;
   } else if (request.reset) {

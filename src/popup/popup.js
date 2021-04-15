@@ -19,6 +19,7 @@ for (var i = 0; i < cursorBtns.length; i++) {
   var imgName = cursorBtns[i].getAttribute("class");
   var cursorImg = "url('images/" + imgName + ".png')";
   cursorBtns[i].style.backgroundImage = cursorImg;
+  cursorBtns[i].style.backgroundRepeat = "no-repeat";
 
   cursorBtns[i].onclick = function (e) {
     getActiveTab().then((tabs) => {
@@ -41,28 +42,28 @@ for (var i = 0; i < cursorBtns.length; i++) {
 /* apply scroll to buttons */
 /* add listener so that when clicked, button applies scroll to page HTML */
 
-for (var i = 0; i < scrollBtns.length; i++) {
-  var scrollName = scrollBtns[i].getAttribute("class");
-  var scrollImg = "url('images/" + scrollName + ".png')";
-  scrollBtns[i].style.backgroundImage = scrollImg;
+// for (var i = 0; i < scrollBtns.length; i++) {
+//   var scrollName = scrollBtns[i].getAttribute("class");
+//   var scrollImg = "url('images/" + scrollName + ".png')";
+//   scrollBtns[i].style.backgroundImage = scrollImg;
 
-  scrollBtns[i].onclick = function (e) {
-    getActiveTab().then((tabs) => {
-      var scrollName = e.target.getAttribute("class");
-      var scrollURL = browser.extension.getURL(
-        "popup/images/" + scrollName + ".png"
-      );
-      browser.tabs.sendMessage(tabs[0].id, { tab: scrollURL });
+//   scrollBtns[i].onclick = function (e) {
+//     getActiveTab().then((tabs) => {
+//       var scrollName = e.target.getAttribute("class");
+//       var scrollURL = browser.extension.getURL(
+//         "popup/images/" + scrollName + ".png"
+//       );
+//       browser.tabs.sendMessage(tabs[0].id, { tab: scrollURL });
 
-      cookieVal.tab = scrollURL;
-      browser.cookies.set({
-        url: tabs[0].url,
-        name: "bgpicker",
-        value: JSON.stringify(cookieVal),
-      });
-    });
-  };
-}
+//       cookieVal.tab = scrollURL;
+//       browser.cookies.set({
+//         url: tabs[0].url,
+//         name: "bgpicker",
+//         value: JSON.stringify(cookieVal),
+//       });
+//     });
+//   };
+// }
 
 /* apply chosen color to HTML background */
 
