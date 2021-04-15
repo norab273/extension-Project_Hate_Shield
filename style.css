@@ -4,7 +4,7 @@
   width: 6.6vh;
 }
 ::-webkit-scrollbar-track {
-  background-color: white;
+  background-color: rgb(46, 87, 221);
   border-radius: 50px;
 }
 ::-webkit-scrollbar-thumb {
@@ -14,11 +14,3 @@
 }
 
 /* cursor */
-
-html {
-  cursor: url("images/icon.PNG"), auto;
-}
-
-body {
-  background-color: blueviolet;
-}
