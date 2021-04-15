@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "Cookie BG Picker",
+  "name": "Bouclier haine en ligne",
   "version": "1.0",
 
-  "description": "Allows the user to customize the background color and pattern of their sites. Also saves their preferences via cookies where possible.",
+  "description": "Replaces insults with emojis. Allows the user to customize the cursor and scrollbar of their sites. ",
   "icons": {
-    "48": "icons/bgpicker-48.png"
+    "48": "icons/shield.png"
   },
 
   "permissions": ["tabs", "cookies", "<all_urls>"],
@@ -24,7 +24,7 @@
 
   "browser_action": {
     "default_icon": {
-      "32": "icons/bgpicker-32.png"
+      "48": "icons/shield.png"
     },
     "default_title": "BG Picker",
     "default_popup": "popup/bgpicker.html"
@@ -37,7 +37,7 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["content_scripts/updatebg.js"]
+      "js": ["content_scripts/updatebg.js", "./emojiMap.js", "./substitute.js"]
     }
   ]
 }
