@@ -9,10 +9,12 @@
     "96": "icons/icon@2x.png"
   },
 
+  "default_popup": "form.html",
+
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["./emojiMap.js", "./substitute.js"]
+      "js": ["./emojiMap.js", "./substitute.js", "./form.js"]
     }
   ]
 }
