@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+  "name": "Bouclier haine en ligne",
+  "version": "1.0",
+
+  "description": "Replaces insults with emojis. Allows the user to customize the cursor and scrollbar of their sites. ",
+  "icons": {
+    "48": "icons/shield.png"
+  },
+
+  "permissions": ["tabs", "cookies", "<all_urls>"],
+
+  "web_accessible_resources": [
+    "popup/images/bullseyes.png",
+    "popup/images/women.png",
+    "popup/images/starring.png",
+    "popup/images/subtle.png",
+    "popup/images/tactilenoise.png",
+    "popup/images/triangles.png",
+    "popup/images/triangles2.png",
+    "popup/images/washi.png",
+    "popup/images/whitey.png"
+  ],
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/shield.png"
+    },
+    "default_title": "BG Picker",
+    "default_popup": "popup/bgpicker.html"
+  },
+
+  "background": {
+    "scripts": ["background_scripts/background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_scripts/updatebg.js", "./emojiMap.js", "./substitute.js"]
+    }
+  ]
+}
