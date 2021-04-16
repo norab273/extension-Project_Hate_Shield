@@ -101,14 +101,12 @@ dictionary.set("va manger du chien", "🌸");
 dictionary.set("vieille-peau", "🌸");
 dictionary.set("youpin", "🌸");
 dictionary.set("youpine", "🌸");
-dictionary.set("synonyme", "🌸");
-dictionary.set("de", "🌸");
 
 browser.runtime.onMessage.addListener(addToDictionary);
 
 let regexs = new Map();
 for (let word of dictionary.keys()) {
-  regexs.set(word, new RegExp("^" + word + "$" + "[:space:]*", "gi"));
+  regexs.set(word, new RegExp(word + "[:space:]*", "gi"));
 }
 
 function addToDictionary(request) {
@@ -118,7 +116,8 @@ function addToDictionary(request) {
     dictionary.set(request.color, "🌸");
     regexs.set(
       request.color,
-      new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
+      //new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
+      new RegExp(request.color + "[:space:]*", "gi")
     );
     replaceText(document.body);
     console.log(request.color);
