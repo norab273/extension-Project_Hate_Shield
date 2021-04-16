@@ -26,7 +26,7 @@ function cookieUpdate() {
         var cookieVal = JSON.parse(cookie.value);
         browser.tabs.sendMessage(tabs[0].id, { image: cookieVal.image });
         browser.tabs.sendMessage(tabs[0].id, { color: cookieVal.color });
-        browser.tabs.sendMessage(tabs[0].id, { tab: cookieVal.tab });
+        //browser.tabs.sendMessage(tabs[0].id, { tab: cookieVal.tab });
       }
     });
   });

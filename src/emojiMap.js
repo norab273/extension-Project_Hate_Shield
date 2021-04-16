@@ -2,8 +2,6 @@
  * This file contains the Map of word --> emoji substitutions.
  */
 
-/* exported sortedEmojiMap */
-
 let dictionary = new Map();
 dictionary.set("allumeuse", "🌸");
 dictionary.set("babtou", "🌸");
@@ -103,37 +101,69 @@ dictionary.set("va manger du chien", "🌸");
 dictionary.set("vieille-peau", "🌸");
 dictionary.set("youpin", "🌸");
 dictionary.set("youpine", "🌸");
+dictionary.set("synonyme", "🌸");
+dictionary.set("de", "🌸");
 
-/*
- * After all the dictionary entries have been set, sort them by length.
- *
- * Because iteration over Maps happens by insertion order, this avoids
- * scenarios where words that are substrings of other words get substituted
- * first, leading to the longer word's substitution never triggering.
- *
- * For example, the 'woman' substitution would never get triggered
- * if the 'man' substitution happens first because the input term 'woman'
- * would become 'wo👨', and the search for 'woman' would not find any matches.
- */
-let tempArray = Array.from(dictionary);
-tempArray.sort((pair1, pair2) => {
-  // Each pair is an array with two entries: a word, and its emoji.
-  // Ex: ['woman', '👩']
-  const firstWord = pair1[0];
-  const secondWord = pair2[0];
+browser.runtime.onMessage.addListener(addToDictionary);
 
-  if (firstWord.length > secondWord.length) {
-    // The first word should come before the second word.
-    return -1;
+let regexs = new Map();
+for (let word of dictionary.keys()) {
+  regexs.set(word, new RegExp("^" + word + "$" + "[:space:]*", "gi"));
+}
+
+function addToDictionary(request) {
+  console.log("avant if");
+  if (request.color) {
+    console.log("dans le if");
+    dictionary.set(request.color, "🌸");
+    regexs.set(
+      request.color,
+      new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
+    );
+    replaceText(document.body);
+    console.log(request.color);
+    console.log(regexs);
   }
-  if (secondWord.length > firstWord.length) {
-    // The second word should come before the first word.
-    return 1;
-  }
+}
 
-  // The words have the same length, it doesn't matter which comes first.
-  return 0;
+function replaceText(node) {
+  console.log("replace text");
+  if (node.nodeType === Node.TEXT_NODE) {
+    if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
+      return;
+    }
+
+    let content = node.textContent;
+
+    for (let [word, emoji] of dictionary) {
+      let regex = regexs.get(word);
+
+      content = content.replace(regex, emoji);
+    }
+    console.log("regexs:" + regexs.size);
+    console.log("dictionary:" + dictionary.size);
+
+    node.textContent = content;
+  } else {
+    for (let i = 0; i < node.childNodes.length; i++) {
+      replaceText(node.childNodes[i]);
+    }
+  }
+}
+
+replaceText(document.body);
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+      for (let i = 0; i < mutation.addedNodes.length; i++) {
+        const newNode = mutation.addedNodes[i];
+        replaceText(newNode);
+      }
+    }
+  });
 });
-
-// Now that the entries are sorted, put them back into a Map.
-let sortedEmojiMap = new Map(tempArray);
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
+});

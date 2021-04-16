@@ -16,3 +16,22 @@
 - début de documentation page préférence
 - petite bourde avec Yazdan (toutes nos excuses)
 
+## Mercredi 14 avril
+
+- répartition features: 
+
+Marie: formulaire pour permettre à l'utilisateur de rajouter des mots à cacher
+Alina: eventListener sur emoji? permettre à l'utilisateur d'afficher le mot s'il le souhaite
+Juliette: personnalisation scroll bar
+Laura: modification RegEx pour que l'extension ne prenne en compte que le mot du dictionnaire uniquement et qu'elle reconnaisse les mots avec espace pour les remplacer par des fleurs
+
+- bilan de journée: feature RegEx terminée 
+                    feature eventListener impossible finalement
+                    
+## Jeudi 15 avril
+
+- merge des différentes branches
+- suppression fichiers inutiles / clean extension
+- feature scroll bar en stand by (difficile à personnaliser sur Firefox)
+- CSS sur popup 
+
