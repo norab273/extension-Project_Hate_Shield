@@ -3,21 +3,7 @@
  * all occurrences of each mapped word with its emoji counterpart.
  */
 
-/*global sortedEmojiMap*/
-
-// emojiMap.js defines the 'sortedEmojiMap' variable.
-// Referenced here to reduce confusion.
-const emojiMap = sortedEmojiMap;
-
-/*
- * For efficiency, create a word --> search RegEx Map too.
- */
-let regexs = new Map();
-for (let word of emojiMap.keys()) {
-  // We want a global, case-insensitive replacement.
-  // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
-  regexs.set(word, new RegExp("^" + word + "$" + "[:space:]*","gi"));
-}
+/*global sorteddictionary*/
 
 /**
  * Substitutes emojis into text nodes.
@@ -28,6 +14,7 @@ for (let word of emojiMap.keys()) {
  * @return {void}         - Note: the emoji substitution is done inline.
  */
 function replaceText(node) {
+  console.log("replace text");
   // Setting textContent on a node removes all of its children and replaces
   // them with a single text node. Since we don't want to alter the DOM aside
   // from substituting text, we only substitute on single text nodes.
@@ -49,16 +36,16 @@ function replaceText(node) {
     let content = node.textContent;
 
     // Replace every occurrence of 'word' in 'content' with its emoji.
-    // Use the emojiMap for replacements.
-    for (let [word, emoji] of emojiMap) {
+    // Use the dictionary for replacements.
+    for (let [word, emoji] of dictionary) {
       // Grab the search regex for this word.
-      const regex = regexs.get(word);
-
+      let regex = regexs.get(word);
       // Actually do the replacement / substitution.
       // Note: if 'word' does not appear in 'content', nothing happens.
       content = content.replace(regex, emoji);
     }
-
+    console.log("regexs:" + Array.from(regexs));
+    console.log("dictionary:" + Array.from(dictionary));
     // Now that all the replacements are done, perform the DOM manipulation.
     node.textContent = content;
   } else {
