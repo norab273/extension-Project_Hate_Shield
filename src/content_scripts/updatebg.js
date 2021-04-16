@@ -20,3 +20,5 @@ function updateBg(request, sender, sendResponse) {
     body.style.backgroundColor = "";
   }
 }
+
+document.body.style.borderTop = "30px solid purple";
