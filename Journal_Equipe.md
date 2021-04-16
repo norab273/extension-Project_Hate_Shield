@@ -35,3 +35,11 @@ Laura: modification RegEx pour que l'extension ne prenne en compte que le mot du
 - feature scroll bar en stand by (difficile à personnaliser sur Firefox)
 - CSS sur popup 
 
+## Vendredi 16 avril
+
+-ajout de la fonctionnalité "ajouter un mot au dictionnaire"
+-cleaning et renaming du code
+-suppression d'un regex qui ne marchait et debut de la resolution du probleme
+-yoga et course a pied
+-crepes et quiche aux legumes verts
+
