@@ -1,18 +1,15 @@
-/* initialise variables scroll & cursor */
+/* initialise variables theme & cursor */
 
 var cursorBtns = document.querySelectorAll(".cursor-container button");
-var scrollBtns = document.querySelectorAll(".scroll-container button");
-var colorPick = document.querySelector("input");
-var reset = document.querySelector(".color-reset button");
-var cookieVal = { image: "", color: "", tab: "" };
+var themeBtns = document.querySelectorAll(".theme-container button");
+var wordPick = document.querySelector("input");
+var reset = document.querySelector(".cursor-reset button");
+var cookieVal = { image: "", word: "", theme: "" };
 
 function getActiveTab() {
-  //Obtient tous les onglets qui ont les propriétés spécifiées, ou tous les onglets si aucune propriété n'est spécifiée.
-  //C'est une fonction asynchrone qui renvoie une Promise.
   return browser.tabs.query({ active: true, currentWindow: true });
 }
 
-/* apply backgrounds to buttons */
 /* add listener so that when clicked, button applies background to page HTML */
 
 for (var i = 0; i < cursorBtns.length; i++) {
@@ -32,50 +29,50 @@ for (var i = 0; i < cursorBtns.length; i++) {
       cookieVal.image = fullURL;
       browser.cookies.set({
         url: tabs[0].url,
-        name: "bgpicker",
+        name: "appearancePicker",
         value: JSON.stringify(cookieVal),
       });
     });
   };
 }
 
-/* apply scroll to buttons */
-/* add listener so that when clicked, button applies scroll to page HTML */
+/* apply theme to buttons */
+/* add listener so that when clicked, button applies theme to page HTML */
 
-// for (var i = 0; i < scrollBtns.length; i++) {
-//   var scrollName = scrollBtns[i].getAttribute("class");
-//   var scrollImg = "url('images/" + scrollName + ".png')";
-//   scrollBtns[i].style.backgroundImage = scrollImg;
+// for (var i = 0; i < themeBtns.length; i++) {
+//   var themeName = themeBtns[i].getAttribute("class");
+//   var themeImg = "url('images/" + themeName + ".png')";
+//   themeBtns[i].style.backgroundImage = themeImg;
 
-//   scrollBtns[i].onclick = function (e) {
+//   themeBtns[i].onclick = function (e) {
 //     getActiveTab().then((tabs) => {
-//       var scrollName = e.target.getAttribute("class");
-//       var scrollURL = browser.extension.getURL(
-//         "popup/images/" + scrollName + ".png"
+//       var themeName = e.target.getAttribute("class");
+//       var themeURL = browser.extension.getURL(
+//         "popup/images/" + themeName + ".png"
 //       );
-//       browser.tabs.sendMessage(tabs[0].id, { tab: scrollURL });
+//       browser.tabs.sendMessage(tabs[0].id, { tab: themeURL });
 
-//       cookieVal.tab = scrollURL;
+//       cookieVal.tab = themeURL;
 //       browser.cookies.set({
 //         url: tabs[0].url,
-//         name: "bgpicker",
+//         name: "appearancePicker",
 //         value: JSON.stringify(cookieVal),
 //       });
 //     });
 //   };
 // }
 
-/* apply chosen color to HTML background */
+/* apply chosen word to HTML background */
 
-colorPick.onchange = function (e) {
+wordPick.onchange = function (e) {
   getActiveTab().then((tabs) => {
-    var currColor = e.target.value;
-    browser.tabs.sendMessage(tabs[0].id, { color: currColor });
+    var currWord = e.target.value;
+    browser.tabs.sendMessage(tabs[0].id, { word: currWord });
 
-    cookieVal.color = currColor;
+    cookieVal.word = currWord;
     browser.cookies.set({
       url: tabs[0].url,
-      name: "bgpicker",
+      name: "appearancePicker",
       value: JSON.stringify(cookieVal),
     });
   });
@@ -87,10 +84,10 @@ reset.onclick = function () {
   getActiveTab().then((tabs) => {
     browser.tabs.sendMessage(tabs[0].id, { reset: true });
 
-    cookieVal = { image: "", color: "" };
+    cookieVal = { image: "", word: "" };
     browser.cookies.remove({
       url: tabs[0].url,
-      name: "bgpicker",
+      name: "appearancePicker",
     });
   });
 };

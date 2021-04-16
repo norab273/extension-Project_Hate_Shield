@@ -1,7 +1,7 @@
 // reçoit message de background ici la valeur image et color
-browser.runtime.onMessage.addListener(updateBg);
+browser.runtime.onMessage.addListener(updateAppearance);
 
-function updateBg(request, sender, sendResponse) {
+function updateAppearance(request) {
   var html = document.querySelector("html");
   var body = document.querySelector("body");
   if (request.image) {
@@ -11,15 +11,8 @@ function updateBg(request, sender, sendResponse) {
   //else if (request.tab) {
   //   html.style.scrollbarColor = "red";
   //   html.style.MozScrollbarTrack = "background-color: rgb(46, 87, 221)";}
-  else if (request.color) {
-    html.style.backgroundColor = request.color;
-    body.style.backgroundColor = request.color;
-  } else if (request.reset) {
+  else if (request.reset) {
     html.style.cursor = "";
-    html.style.backgroundColor = "";
     body.style.cursor = "";
-    body.style.backgroundColor = "";
   }
 }
-
-document.body.style.borderTop = "30px solid purple";

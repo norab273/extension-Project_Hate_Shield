@@ -105,28 +105,23 @@ dictionary.set("youpine", "🌸");
 browser.runtime.onMessage.addListener(addToDictionary);
 
 let regexs = new Map();
-for (let word of dictionary.keys()) {
-  regexs.set(word, new RegExp(word + "[:space:]*", "gi"));
+for (let element of dictionary.keys()) {
+  regexs.set(element, new RegExp(element + "[:space:]*", "gi"));
 }
 
 function addToDictionary(request) {
-  console.log("avant if");
-  if (request.color) {
-    console.log("dans le if");
-    dictionary.set(request.color, "🌸");
+  if (request.word) {
+    dictionary.set(request.word, "🌸");
     regexs.set(
-      request.color,
+      request.word,
       //new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
-      new RegExp(request.color + "[:space:]*", "gi")
+      new RegExp(request.word + "[:space:]*", "gi")
     );
     replaceText(document.body);
-    console.log(request.color);
-    console.log(regexs);
   }
 }
 
 function replaceText(node) {
-  console.log("replace text");
   if (node.nodeType === Node.TEXT_NODE) {
     if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
       return;
@@ -134,13 +129,11 @@ function replaceText(node) {
 
     let content = node.textContent;
 
-    for (let [word, emoji] of dictionary) {
-      let regex = regexs.get(word);
+    for (let [element, emoji] of dictionary) {
+      let regex = regexs.get(element);
 
       content = content.replace(regex, emoji);
     }
-    console.log("regexs:" + regexs.size);
-    console.log("dictionary:" + dictionary.size);
 
     node.textContent = content;
   } else {
