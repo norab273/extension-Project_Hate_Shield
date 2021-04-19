@@ -5,6 +5,7 @@ var themeBtns = document.querySelectorAll(".theme-container button");
 var wordPick = document.querySelector("input");
 var reset = document.querySelector(".cursor-reset button");
 var cookieVal = { image: "", word: "", theme: "" };
+var settings = document.querySelector(".settings");
 
 function getActiveTab() {
   return browser.tabs.query({ active: true, currentWindow: true });
@@ -100,3 +101,9 @@ browser.cookies.onChanged.addListener((changeInfo) => {
               * Cause: ${changeInfo.cause}\n
               * Removed: ${changeInfo.removed}`);
 });
+
+/* Settings button*/
+
+settings.onclick = function () {
+  browser.runtime.openOptionsPage();
+};

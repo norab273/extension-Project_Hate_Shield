@@ -56,3 +56,6 @@ input {
   height: 110%;
   margin: 5% 1% 1% 1%;
 }
+.settings {
+  border-radius: 10px;
+}
