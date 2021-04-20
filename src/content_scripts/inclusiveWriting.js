@@ -324,7 +324,11 @@ dictionaryIncl.set("développeurs", "développeur.euse.s");
 
 let regexs = new Map();
 for (let element of dictionaryIncl.keys()) {
+<<<<<<< HEAD:src/content_scripts/inclusiveWriting.js
   regexs.set(element, new RegExp(element, "gi"));
+=======
+  regexs.set(element, new RegExp("\\b" + element + "\\b", "gi"));
+>>>>>>> 1b5b6989fd10dec801e902b5f7ac882ae99548ff:src/inclusiveWriting.js
 }
 
 function replaceTextIncl(node) {

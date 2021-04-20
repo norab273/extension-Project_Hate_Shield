@@ -1,26 +1,43 @@
 <!DOCTYPE html>
-
 <html>
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="popup.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v3.0.6/css/line.css"
+    />
   </head>
-
   <body>
-    <div class="big-container">
-      <div class="cursor-container">
-        <p>Choisis ton curseur</p>
-        <div class="button-container">
+    <div class="popup">
+      <header>
+        <span>Choisis ton curseur</span>
+        <!-- reset -->
+        <!-- <div class="close"></div> -->
+        <div class="reset">
+          <i class="uil uil-times"></i>
+        </div>
+      </header>
+      <div class="content">
+        <div class="cursor-container">
           <button class="women"></button><button class="lgbt"></button
           ><button class="handicap"></button><button class="blm"></button>
         </div>
-      </div>
-
-      <div class="cursor-reset">
         <p>Mot à cacher 🌸</p>
-        <input type="text" placeholder="ajoute un mot" />
-        <div><button>Reset</button></div>
+        <!-- precedant -- <div class="cursor-reset"></div> -->
+        <div class="field">
+          <!-- image sur le typeform -->
+          <!-- <i class="url-icon uil uil-link"></i> -->
+          <input type="text" placeholder="ajoute un mot" />
+          <button>ajouter</button>
+        </div>
+        <button class="settings">réglage</button>
       </div>
+<<<<<<< HEAD
 
       <div class="inclusive-on/off"> 
         <p>Ecriture inclusive</p>
@@ -31,8 +48,10 @@
       </div>
 
       <button class="settings">settings</button>
+=======
+>>>>>>> 1b5b6989fd10dec801e902b5f7ac882ae99548ff
     </div>
-    <script src="popup.js"></script>
+     <script src="popup.js"></script>
   </body>
 </html>
 

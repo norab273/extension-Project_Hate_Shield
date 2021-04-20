@@ -3,7 +3,7 @@
 var cursorBtns = document.querySelectorAll(".cursor-container button");
 var themeBtns = document.querySelectorAll(".theme-container button");
 var wordPick = document.querySelector("input");
-var reset = document.querySelector(".cursor-reset button");
+var reset = document.querySelector(".reset");
 var cookieVal = { image: "", word: "", theme: "" };
 var settings = document.querySelector(".settings");
 
