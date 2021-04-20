@@ -263,9 +263,20 @@ dictionary.set("youpine", "🌸");
 
 browser.runtime.onMessage.addListener(addToDictionary);
 
+//FONCTION QUI SUPPRIME LES ACCENTS:
+String.prototype.sansAccents = function () {
+  return this.replace(/[ùûü]/g, "u")
+    .replace(/[îï]/g, "i")
+    .replace(/[àâä]/g, "a")
+    .replace(/[ôö]/g, "o")
+    .replace(/[éèêë]/g, "e")
+    .replace(/ç/g, "c");
+};
+
 let regexs = new Map();
 for (let element of dictionary.keys()) {
-  regexs.set(element, new RegExp(element + "[:space:]*", "gi"));
+  regexs.set(element, new RegExp("\\b" + element.sansAccents() + "\\b", "gi"));
+  //regexs.set(element, new RegExp("\\b" + element.sansAccents() + "\\b", "gi"));
 }
 
 function addToDictionary(request) {
@@ -274,7 +285,7 @@ function addToDictionary(request) {
     regexs.set(
       request.word,
       //new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
-      new RegExp(request.word + "[:space:]*", "gi")
+      new RegExp("\\b" + request.word + "\\b", "gi")
     );
     replaceText(document.body);
   }
