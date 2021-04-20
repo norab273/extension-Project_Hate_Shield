@@ -323,7 +323,7 @@ dictionaryIncl.set("développeurs", "développeur.euse.s");
 
 let regexs = new Map();
 for (let element of dictionaryIncl.keys()) {
-  regexs.set(element, new RegExp(element + "[:space:]*", "gi"));
+  regexs.set(element, new RegExp("\\b" + element + "\\b", "gi"));
 }
 
 function replaceTextIncl(node) {
