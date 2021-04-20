@@ -264,15 +264,9 @@ dictionary.set("usagers", "usager.ère.s");
 dictionary.set("développeurs", "développeur.euse.s");
 
 browser.runtime.onMessage.addListener(addToDictionary);
-
 let regexsEmo = new Map();
 for (let element of dictionary.keys()) {
-  regexsEmo.set(element, new RegExp(element + "[:space:]*", "gi"));
-}
-
-let regexsInc = new Map();
-for (let element of dictionaryIncl.keys()) {
-  regexsInc.set(element, new RegExp(element, "gi"));
+  regexsEmo.set(element, new RegExp("\\b" + element + "\\b", "gi"));
 }
 
 function addToDictionary(request) {
@@ -281,10 +275,15 @@ function addToDictionary(request) {
     regexsEmo.set(
       request.word,
       //new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
-      new RegExp(request.word + "[:space:]*", "gi")
+      new RegExp("\\b" + request.word + "\\b", "gi")
     );
     replaceText(document.body);
   }
+}
+
+let regexsInc = new Map();
+for (let element of dictionaryIncl.keys()) {
+  regexsInc.set(element, new RegExp("\\b" + element + "\\b", "gi"));
 }
 
 function replaceText(node) {
