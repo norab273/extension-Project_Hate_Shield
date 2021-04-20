@@ -2,33 +2,30 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 
-body {
-  background: #ecf0f3;
+html {
+  font-family: "Poppins";
+  margin: 0;
 }
 
 .popup {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50%; */
   background: #fff;
+  height: 280px;
+  width: 300px;
   padding: 25px;
   border-radius: 15px;
-  max-width: 250px;
-  /* height: 350px */
-  width: 100%;
-  transform: translate(-50%, -50%) scale(1.2);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  /* transform: translate(-50%, -50%) scale(1.2); */
 }
 
-.popup :is(header, .cursor-container, ) {
+.popup :is(header, .cursor-container) {
   display: flex;
-  align-items: center;
+  align-items: row;
   justify-content: space-between;
 }
 
@@ -40,7 +37,7 @@ body {
   border-bottom: 1px solid #ebedf9; */
 }
 header span {
-  font-size: 15px;
+  font-size: 19px;
   font-weight: 500;
 }
 
@@ -62,23 +59,52 @@ header .reset {
 }
 
 .content p {
-  font-size: 13px;
+  font-size: 18px;
   margin: 20px 0;
 }
 
-.content .settings {
+.cursor-container button {
+  width: 50px;
+  height: 50px;
+}
+
+.women,
+.lgbt,
+.blm,
+.handicap {
+  background-position: center;
+  background-color: #ecf0f3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.field button {
+  /* font-size: 17px; */
+  background: #f2f3fb;
+  /* height: 30px;
+  width: 30px; */
+}
+.settings {
   margin: 20px 0;
+}
+
+.settings {
+  /* font-size: 17px; */
+  background: #f2f3fb;
+  /* height: 30px;
+  width: 30px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* .cursor-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  /* height: 50px;
+  height: 50px;
   width: 50px;
   font-size: 20px;
   text-decoration: none;
-  border: 1px solid transparent; */
+  border: 1px solid transparent;
+}
 
 .women,
 .lgbt,
@@ -92,7 +118,7 @@ header .reset {
   background-position: center;
   background-color: #ecf0f3;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+} */
 
 /* html {
   line-height: 1.6;
