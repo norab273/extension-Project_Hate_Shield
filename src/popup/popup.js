@@ -104,6 +104,6 @@ reset.onclick = function () {
 
 /* Settings button*/
 
-settings.onclick = function () {
-  browser.runtime.openOptionsPage();
-};
+// function NewTab() {
+//   window.open("https://www.geeksforgeeks.org", "_blank");
+// }

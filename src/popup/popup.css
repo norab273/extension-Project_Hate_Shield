@@ -78,22 +78,13 @@ header .reset {
 }
 
 .field button {
-  /* font-size: 17px; */
   background: #f2f3fb;
-  /* height: 30px;
-  width: 30px; */
 }
 .settings {
   margin: 20px 0;
 }
 
 .settings {
-  /* font-size: 17px; */
-  background: #f2f3fb;
-  /* height: 30px;
-  width: 30px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* background: #f2f3fb; */
   cursor: pointer;
 }
