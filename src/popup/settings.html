@@ -9,6 +9,11 @@
   </head>
   <body>
     <h1>Masquer la haine en ligne avec des 🌸</h1>
+    <p>Please select on /off:</p>
+    <input type="radio" id="on" name="option" value="on" />
+    <label for="on">On</label><br />
+    <input type="radio" id="off" name="option" value="off" />
+    <label for="off">Off</label><br />
     <details>
       <summary class="masqueHaine">
         Liste des mots automatiquement masqués
@@ -300,7 +305,9 @@
         </p>
       </div>
     </details>
-    <script src="settings.js"></script>
-    <script src="popup.js"></script>
+    <ul class="exercise-list"></ul>
+
+    <script src="/pc-extension-mar-jul-ali-lau/src/emojiMap.js"></script>
+    <script src="/pc-extension-mar-jul-ali-lau/src/popup/popup.js"></script>
   </body>
 </html>

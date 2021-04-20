@@ -280,6 +280,15 @@ function addToDictionary(request) {
   }
 }
 
+// function displayValues() {
+//   for (let [clef, valeur] of dictionary) {
+//     console.log(valeur);
+//   }
+// }
+
+// displayValues();
+// console.log("values");
+
 function replaceText(node) {
   if (node.nodeType === Node.TEXT_NODE) {
     if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
@@ -302,8 +311,13 @@ function replaceText(node) {
   }
 }
 
-replaceText(document.body);
-console.log("hello!");
+var checkBox = document.getElementById("on");
+console.log(checkBox);
+console.log(checkBox.checked);
+if (checkBox.checked == true) {
+  replaceText(document.body);
+  console.log("hello!");
+}
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {

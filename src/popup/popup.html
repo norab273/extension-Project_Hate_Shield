@@ -7,6 +7,9 @@
   </head>
 
   <body>
+    <script>
+      var mySwitch = new Switch(el);
+    </script>
     <div class="big-container">
       <div class="cursor-container">
         <p>Choisis ton curseur</p>
@@ -18,13 +21,18 @@
 
       <div class="cursor-reset">
         <p>Mot à cacher 🌸</p>
-        <input type="text" placeholder="ajoute un mot" />
+        <input type="text" placeholder="ajoute un mot" /><br />
         <div><button>Reset</button></div>
       </div>
+      <div>
+        <form action="settings.html" method="post" target="_blank">
+          <input type="submit" value="Préférences" /> <br />
+        </form>
+      </div>
 
-      <button class="settings">settings</button>
+      <script src="popup.js"></script>
+      <script src="/pc-extension-mar-jul-ali-lau/src/emojiMap.js"></script>
     </div>
-    <script src="popup.js"></script>
   </body>
 </html>
 
