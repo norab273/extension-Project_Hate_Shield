@@ -95,12 +95,12 @@ reset.onclick = function () {
 
 /* Report cookie changes to the console */
 
-browser.cookies.onChanged.addListener((changeInfo) => {
-  console.log(`Cookie changed:\n
-              * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
-              * Cause: ${changeInfo.cause}\n
-              * Removed: ${changeInfo.removed}`);
-});
+// browser.cookies.onChanged.addListener((changeInfo) => {
+//   console.log(`Cookie changed:\n
+//               * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
+//               * Cause: ${changeInfo.cause}\n
+//               * Removed: ${changeInfo.removed}`);
+// });
 
 /* Settings button*/
 

@@ -7,11 +7,7 @@ function updateAppearance(request) {
   if (request.image) {
     html.style.cursor = "url(" + request.image + "), auto";
     body.style.cursor = "url(" + request.image + "),, auto";
-  }
-  //else if (request.tab) {
-  //   html.style.scrollbarColor = "red";
-  //   html.style.MozScrollbarTrack = "background-color: rgb(46, 87, 221)";}
-  else if (request.reset) {
+  } else if (request.reset) {
     html.style.cursor = "";
     body.style.cursor = "";
   }
