@@ -41,9 +41,10 @@
       "matches": ["<all_urls>"],
       "js": [
         "content_scripts/updateAppearance.js",
-        "./emojiMap.js",
-        "./inclusiveWriting.js"
+        "content_scripts/emojiMap.js"
+        
       ]
+  
     }
   ]
 }

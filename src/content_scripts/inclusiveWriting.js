@@ -158,6 +158,7 @@ dictionaryIncl.set("territorials", "territorial.e.s");
 dictionaryIncl.set("transporteurs", "transporteur.euse.s");
 dictionaryIncl.set("travailleurs", "travailleur.euse.s");
 dictionaryIncl.set("usagers", "usager.ère.s");
+dictionaryIncl.set("utilisateurs", "utilisateur.rice.s");
 dictionaryIncl.set("développeurs", "développeur.euse.s");
 
 // let dictionaryIncl = new Map();
@@ -323,32 +324,36 @@ dictionaryIncl.set("développeurs", "développeur.euse.s");
 
 let regexs = new Map();
 for (let element of dictionaryIncl.keys()) {
-  regexs.set(element, new RegExp(element + "[:space:]*", "gi"));
+  regexs.set(element, new RegExp(element, "gi"));
 }
 
 function replaceTextIncl(node) {
   if (node.nodeType === Node.TEXT_NODE) {
     if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
-      return;
+      console.log("replaceTextIncl");
     }
+
+    console.log("replaceTextIncl2")
 
     let content = node.textContent;
 
-    for (let [element, emoji] of dictionaryIncl) {
+    for (let [element, inclWord] of dictionaryIncl) {
       let regex = regexs.get(element);
 
-      content = content.replace(regex, emoji);
+      content = content.replace(regex, inclWord);
+
     }
 
     node.textContent = content;
   } else {
     for (let i = 0; i < node.childNodes.length; i++) {
-      replaceText(node.childNodes[i]);
+      replaceTextIncl(node.childNodes[i]);
+
     }
   }
 }
 
-replaceText(document.body);
+replaceTextIncl(document.body);
 console.log("inclusive2");
 
 const observer = new MutationObserver((mutations) => {
@@ -356,7 +361,7 @@ const observer = new MutationObserver((mutations) => {
     if (mutation.addedNodes && mutation.addedNodes.length > 0) {
       for (let i = 0; i < mutation.addedNodes.length; i++) {
         const newNode = mutation.addedNodes[i];
-        replaceText(newNode);
+        replaceTextIncl(newNode);
       }
     }
   });
