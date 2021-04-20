@@ -8,7 +8,9 @@
     <title>settings</title>
   </head>
   <body>
-    <h1>Masquer la haine en ligne avec des 🌸</h1>
+    <h1> <img src="../icons/shield.png" alt="rainbow shield"> Bienvenue sur votre bouclier anti-haine</h1>
+    
+    <h2>Masquer la haine en ligne avec des 🌸</h2>
     <p>Please select on /off:</p>
     <input type="radio" id="on" name="option" value="on" />
     <label for="on">On</label><br />
@@ -115,7 +117,7 @@
         </p>
       </div>
     </details>
-    <h1>Ecriture inclusive</h1>
+    <h2>Ecriture inclusive</h2>
     <details>
       <summary class="ecritureInclusive">
         Liste des mots automatiquement modifiés
@@ -216,7 +218,7 @@
         </p>
       </div>
     </details>
-    <h1>Répondre à la haine en ligne</h1>
+    <h2>Répondre à la haine en ligne</h2>
     <details>
       <summary class="reponseHate">
         Propositions de réponses à la haine en ligne
@@ -305,9 +307,40 @@
         </p>
       </div>
     </details>
-    <ul class="exercise-list"></ul>
+    <h2>Signaler ces contenus</h2>
+    <p>
+      Vous pouvez signaler les contenus racistes, sexistes et homophobes sur la
+      plateforme PHAROS, qui a été mise en place par les pouvoirs publics pour
+      signaler ce type de contenu <br />
+      Commencez votre signalement ici : 
+      <form
+          class="report"
+          action="https://www.internet-signalement.gouv.fr/PortailWeb/planets/SignalerEtapeInformer!load.action"
+          method="post"
+          target="_blank"
+        >
+          <input type="submit" class="btn" value="Signaler" /> <br />
+        </form><br>
+      Vous pouvez signaler les faits de :
+<li>
+  <ul>Pédophilie et pédopornographie (Art 227-23 du code pénal modifié par  la Loi n°2013-711 du 5 août 2013)
+  </ul>
+  <ul>Expression du racisme, de l'antisémitisme et de la xénophobie (Loi n° 90-615 du 13 juillet 1990)
+  </ul>
+  <ul>Incitation à la haine raciale, ethnique et religieuse (Loi du 29 juillet 1881- art 29)
+  </ul>
+  <ul>Terrorisme et apologie du terrorisme (Loi n° 2014-1353 du 13 novembre 2014)
+  </ul>
+  <ul>Escroquerie et arnaque financières utilisant internet
+  </ul>
+</li>
 
-    <script src="/pc-extension-mar-jul-ali-lau/src/emojiMap.js"></script>
-    <script src="/pc-extension-mar-jul-ali-lau/src/popup/popup.js"></script>
+
+    </p>
+
+
+    
+
+    <script src="../content_scripts/emojiMap.js"></script>
   </body>
 </html>

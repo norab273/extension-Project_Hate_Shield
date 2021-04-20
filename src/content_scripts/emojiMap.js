@@ -309,7 +309,13 @@ function replaceText(node) {
 }
 
 replaceText(document.body);
-console.log("hello!");
+
+//FAIRE DES COOKIES
+// var checkBox = browser.windows.getAll();
+// console.log(checkBox);
+// if (checkBox.checked == true) {
+//   replaceText(document.body);
+// }
 
 function replaceTextIncl(node) {
   if (node.nodeType === Node.TEXT_NODE) {
@@ -317,7 +323,7 @@ function replaceTextIncl(node) {
       console.log("replaceTextIncl");
     }
 
-    console.log("replaceTextIncl2")
+    console.log("replaceTextIncl2");
 
     let content = node.textContent;
 
@@ -325,14 +331,12 @@ function replaceTextIncl(node) {
       let regex = regexsInc.get(element);
 
       content = content.replace(regex, inclWord);
-
     }
 
     node.textContent = content;
   } else {
     for (let i = 0; i < node.childNodes.length; i++) {
       replaceTextIncl(node.childNodes[i]);
-
     }
   }
 }

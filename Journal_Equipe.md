@@ -18,22 +18,22 @@
 
 ## Mercredi 14 avril
 
-- répartition features: 
+- répartition features:
 
 Marie: formulaire pour permettre à l'utilisateur de rajouter des mots à cacher
 Alina: eventListener sur emoji? permettre à l'utilisateur d'afficher le mot s'il le souhaite
 Juliette: personnalisation scroll bar
 Laura: modification RegEx pour que l'extension ne prenne en compte que le mot du dictionnaire uniquement et qu'elle reconnaisse les mots avec espace pour les remplacer par des fleurs
 
-- bilan de journée: feature RegEx terminée 
-                    feature eventListener impossible finalement
-                    
+- bilan de journée: feature RegEx terminée
+  feature eventListener impossible finalement
+
 ## Jeudi 15 avril
 
 - merge des différentes branches
 - suppression fichiers inutiles / clean extension
 - feature scroll bar en stand by (difficile à personnaliser sur Firefox)
-- CSS sur popup 
+- CSS sur popup
 
 ## Vendredi 16 avril
 
@@ -43,3 +43,17 @@ Laura: modification RegEx pour que l'extension ne prenne en compte que le mot du
 -yoga et course a pied
 -crepes et quiche aux legumes verts
 
+## Lundi 19 avril
+
+- galère sur le storage / préférences
+- tentative page settings : affichage liste des mots
+- début écriture inclusive
+
+## Mardi 20 avril
+
+- css pop up
+- regexs espaces
+- finalisation écriture inclusive
+- page settings
+- début de travail sur on/off
+- première pull request/ galère git
