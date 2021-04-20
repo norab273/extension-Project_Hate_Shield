@@ -1,34 +1,128 @@
 /* General styling */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-html {
-  font-family: sans-serif;
+body {
+  background: #ecf0f3;
+}
+
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 250px;
+  /* height: 350px */
+  width: 100%;
+  transform: translate(-50%, -50%) scale(1.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.popup :is(header, .cursor-container, ) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding-bottom: 15px;
+  border-bottom: 1px solid #ebedf9; */
+}
+header span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+header .reset {
+  color: #878787;
+  /* font-size: 17px; */
+  background: #f2f3fb;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.content {
+  margin: 20px 0;
+}
+
+.content p {
+  font-size: 13px;
+  margin: 20px 0;
+}
+
+.content .settings {
+  margin: 20px 0;
+}
+
+/* .cursor-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /* height: 50px;
+  width: 50px;
   font-size: 20px;
-  background: #ffffff;
+  text-decoration: none;
+  border: 1px solid transparent; */
+
+.women,
+.lgbt,
+.blm,
+.handicap {
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background-position: center;
+  background-color: #ecf0f3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* html {
+  line-height: 1.6;
+  font-size: 20px;
   height: 250px;
   margin: 0;
 }
 
 body {
+  background: #ecf0f3;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 250px;
+  border-radius: 20px;
   margin: 0 auto;
-  height: inherit;
-}
-.button-container {
+  height: 300px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+} */
+
+/* .button-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
-.cursor-container button {
+
+.popup button {
   width: 50px;
   height: 50px;
-  margin: 1px;
+  margin: 2px;
 }
 
 .women,
@@ -36,7 +130,8 @@ body {
 .blm,
 .handicap {
   background-position: center;
-  background-color: white;
+  background-color: #ecf0f3;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .cursor-reset {
@@ -58,4 +153,4 @@ input {
 }
 .settings {
   border-radius: 10px;
-}
+} */
