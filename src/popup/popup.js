@@ -101,9 +101,3 @@ reset.onclick = function () {
 //               * Cause: ${changeInfo.cause}\n
 //               * Removed: ${changeInfo.removed}`);
 // });
-
-/* Settings button*/
-
-// function NewTab() {
-//   window.open("https://www.geeksforgeeks.org", "_blank");
-// }
