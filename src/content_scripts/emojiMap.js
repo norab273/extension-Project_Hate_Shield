@@ -195,11 +195,24 @@ dictionaryIncl.set("travailleur", "travailleur.euse");
 dictionaryIncl.set("usager", "usager.ère");
 dictionaryIncl.set("développeur", "développeur.euse");
 
-
 browser.runtime.onMessage.addListener(addToDictionary);
+//FONCTION QUI REMPLACE LES CARACTERES ACCENTUÉS :
+String.prototype.sansAccents = function () {
+  return this.replace(/[ùûü]/g, "u")
+    .replace(/[îï]/g, "i")
+    .replace(/[àâä]/g, "a")
+    .replace(/[ôö]/g, "o")
+    .replace(/[éèêë]/g, "e")
+    .replace(/ç/g, "c");
+};
+
 let regexsEmo = new Map();
+
 for (let element of dictionary.keys()) {
-  regexsEmo.set(element, new RegExp("\\b" + element + "\\b", "gi"));
+  regexsEmo.set(
+    element,
+    new RegExp("\\b" + element.sansAccents() + "\\b", "gi")
+  );
 }
 
 function addToDictionary(request) {
@@ -230,7 +243,7 @@ function replaceText(node) {
     for (let [element, emoji] of dictionary) {
       let regex = regexsEmo.get(element);
 
-      content = content.replace(regex, emoji);
+      content = content.sansAccents().replace(regex, emoji);
     }
 
     node.textContent = content;
