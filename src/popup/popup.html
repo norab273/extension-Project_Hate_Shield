@@ -14,7 +14,176 @@
   </head>
   <body>
     <div class="popup">
-      <header>
+      <div class="content">
+        <h2>Ecriture Inclusive 🌸</h2>
+        <div class="onoffswitch">
+          <input
+            type="checkbox"
+            name="onoffswitch"
+            class="onoffswitch-checkbox"
+            id="myonoffswitch"
+            tabindex="0"
+            checked
+          />
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+        <hr />
+        <h2>Masque la haine en ligne 🌸</h2>
+        <div class="onoffswitch2">
+          <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" tabindex="0" checked>
+          <label class="onoffswitch2-label" for="myonoffswitch2">
+              <span class="onoffswitch2-inner"></span>
+              <span class="onoffswitch2-switch"></span>
+          </label>
+      </div>
+  
+
+        <p>Tu peux ajouter d'autres mots à masquer :<p>
+        <div class="field">
+          <input id="word" type="text" placeholder="ajoute un mot" />
+          <button>ajouter</button>
+        </div>
+
+        <hr>
+        <h2>Masque une image 🌸</h2>
+        <div class="field">
+          <button>remplacer les images</button>
+        </div>
+        <hr>
+        <h2>Réponds à la haine 🌸</h2>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <select id="choose-answer">
+          <option value="Choisis">Choisis une réponse :</option>
+          <option
+            value="Au championnat du monde de la connerie, tu finirais 2ème. Tu es trop con pour finir premier."
+          >
+            Au championnat du monde de la connerie, tu finirais 2ème. Tu es trop
+            con pour finir premier.
+          </option>
+          <option value="Au niveau bagage intellectuel, tu voyages léger">
+            Au niveau bagage intellectuel, tu voyages léger
+          </option>
+          <option
+            value="Comme disait mon grand-père tout les ans il y a de plus en plus de cons, mais cette année j'ai l'impression que les cons de l'année prochaine sont déjà là."
+          >
+            Comme disait mon grand-père tout les ans il y a de plus en plus de
+            cons, mais cette année j'ai l'impression que les cons de l'année
+            prochaine sont déjà là.
+          </option>
+          <option
+            value="Il faut avoir un certain talent pour être drôle, et tu en es complètement dénué"
+          >
+            Il faut avoir un certain talent pour être drôle, et tu en es
+            complètement dénué
+          </option>
+          <option
+            value="J’espère vraiment que le reste de ta journée sera aussi agréable que tu sais l’être."
+          >
+            J’espère vraiment que le reste de ta journée sera aussi agréable que
+            tu sais l’être.
+          </option>
+          <option
+            value="Je crois à l’équilibre de toute chose dans ce monde, mais sincèrement, je n’arrive pas à voir quelles qualités tu peux bien avoir pour compenser une telle bétise"
+          >
+            Je crois à l’équilibre de toute chose dans ce monde, mais
+            sincèrement, je n’arrive pas à voir quelles qualités tu peux bien
+            avoir pour compenser une telle bétise
+          </option>
+          <option
+            value="Je ne peux qu’être impressionné par la patience dont font preuve ceux qui doivent se coltiner ta présence au quotidien."
+          >
+            Je ne peux qu’être impressionné par la patience dont font preuve
+            ceux qui doivent se coltiner ta présence au quotidien.
+          </option>
+          <option
+            value="Le doute est l'apanage des gens intelligents, les cons comme toi n'ont que des certitudes."
+          >
+            Le doute est l'apanage des gens intelligents, les cons comme toi
+            n'ont que des certitudes.
+          </option>
+          <option
+            value="Les gens ont l'air de croire que le vide de leur cerveau leur meuble les couilles."
+          >
+            Les gens ont l'air de croire que le vide de leur cerveau leur meuble
+            les couilles.
+          </option>
+          <option
+            value="Moi j’aime beaucoup le port du masque, ça camoufle les effluves de pourriture qui émanent de ta bouche dès que tu l'ouvres"
+          >
+            Moi j’aime beaucoup le port du masque, ça camoufle les effluves de
+            pourriture qui émanent de ta bouche dès que tu l'ouvres
+          </option>
+          <option value="Patient zéro de la connerie">
+            Patient zéro de la connerie
+          </option>
+          <option
+            value="Quand on mettra les cons sur orbite, t'as pas fini de tourner."
+          >
+            Quand on mettra les cons sur orbite, t'as pas fini de tourner.
+          </option>
+          <option
+            value="Regarde où tu mets les pieds, tu risques de marcher sur la merde que tu es en train de raconter"
+          >
+            Regarde où tu mets les pieds, tu risques de marcher sur la merde que
+            tu es en train de raconter
+          </option>
+          <option
+            value="Si l’intelligence, la subtilité et la finesse d’esprit ne sont pas tes points forts, alors tu pourrais au moins tenter de te démarquer par ta discrétion ?"
+          >
+            Si l’intelligence, la subtilité et la finesse d’esprit ne sont pas
+            tes points forts, alors tu pourrais au moins tenter de te démarquer
+            par ta discrétion ?
+          </option>
+          <option
+            value="T'es aussi agréable et désiré dans cette conversation qu'un poil de cul dans mon cookie"
+          >
+            T'es aussi agréable et désiré dans cette conversation qu'un poil de
+            cul dans mon cookie
+          </option>
+          <option
+            value="Ton avis est aussi utile qu'un soutien-george en période de confinement"
+          >
+            Ton avis est aussi utile qu'un soutien-george en période de
+            confinement
+          </option>
+          <option
+            value="Tu es aussi brillant qu’un trou noir, et au moins deux fois plus lourd."
+          >
+            Tu es aussi brillant qu’un trou noir, et au moins deux fois plus
+            lourd.
+          </option>
+          <option
+            value="Tu es la raison pour laquelle ils sont obligés de nous mettre des panneaux indiquant le danger sur les lignes à haute tension et au bord des précipices."
+          >
+            Tu es la raison pour laquelle ils sont obligés de nous mettre des
+            panneaux indiquant le danger sur les lignes à haute tension et au
+            bord des précipices.
+          </option>
+          <option
+            value="Tu éteins en moi la plus infime lueur d'espoir en l'avenir du monde"
+          >
+            Tu éteins en moi la plus infime lueur d'espoir en l'avenir du monde
+          </option>
+          <option value="Tu fais avancer l'horloge de l'Apocalypse">
+            Tu fais avancer l'horloge de l'Apocalypse
+          </option>
+        </select>
+        <p>Tu peux maintenant coller la réponse où tu veux.</p>
+        <hr>
+        <h2>Signale la haine 🌸</h2>
+        <form
+          class="report"
+          action="https://www.internet-signalement.gouv.fr/PortailWeb/planets/SignalerEtapeInformer!load.action"
+          method="post"
+          target="_blank"
+        >
+          <input type="submit" class="btn" value="Signaler" /> <br />
+        </form>
+        <hr>
+        <header>
         <span>Choisis ton curseur</span>
         <!-- reset -->
         <!-- <div class="close"></div> -->
@@ -27,21 +196,15 @@
           <button class="women"></button><button class="lgbt"></button
           ><button class="handicap"></button><button class="blm"></button>
         </div>
-        <p>Mot à cacher 🌸</p>
-        <!-- precedant -- <div class="cursor-reset"></div> -->
-        <div class="field">
-          <!-- image sur le typeform -->
-          <!-- <i class="url-icon uil uil-link"></i> -->
-          <input type="text" placeholder="ajoute un mot" />
-          <button>ajouter</button>
-        </div>
+        <hr>
+        <h2>Plus d'informations ici :</h2>
         <form
           class="settings"
           action="settings.html"
           method="post"
           target="_blank"
         >
-          <input type="submit" value="Préférences" /> <br />
+          <input type="submit" value="Menu" /> <br />
         </form>
       </div>
       <script src="popup.js"></script>

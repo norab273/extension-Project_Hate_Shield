@@ -2,7 +2,7 @@
 
 var cursorBtns = document.querySelectorAll(".cursor-container button");
 var themeBtns = document.querySelectorAll(".theme-container button");
-var wordPick = document.querySelector("input");
+var wordPick = document.getElementById("word");
 var reset = document.querySelector(".reset");
 var cookieVal = { image: "", word: "", theme: "" };
 var settings = document.querySelector(".settings");
@@ -102,8 +102,10 @@ reset.onclick = function () {
 //               * Removed: ${changeInfo.removed}`);
 // });
 
-/* Settings button*/
-
-// function NewTab() {
-//   window.open("https://www.geeksforgeeks.org", "_blank");
-// }
+$("#choose-answer").on("change", function () {
+  var value = `<input value="${$(this).val()}" id="selVal" />`;
+  $(value).insertAfter("#choose-answer");
+  $("#selVal").select();
+  document.execCommand("Copy");
+  $("body").find("#selVal").remove();
+});

@@ -11,8 +11,8 @@
     <div id="container">
       <div id="title">
         <h1>
-          <img src="../icons/shield.png" alt="rainbow shield" /> Bienvenue sur votre
-          bouclier anti-haine
+          <img src="../icons/shield.png" alt="rainbow shield" /> Bienvenue sur
+          votre bouclier anti-haine
         </h1>
       </div>
 
@@ -137,144 +137,299 @@
             Propositions de réponses à la haine en ligne
           </summary>
           <div class="answers">
-            <details>
-              <summary class="Sexisme">Réponses anti-sexistes</summary>
-              <p>
-                "En Europe, les femmes consacrent en moyenne 22 heures par
-                semaine à des tâches fami-liales et domestiques, les hommes 9
-                heures."<br />
-
-                "Le féminisme n’a jamais tué personne. Le machisme tue tous les
-                jours"<br />
-
-                "En Europe, les femmes consacrent en moyenne 22 heures par semaine
-                à des tâches fami-liales et domestiques, les hommes 9 heures."
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <select id="sexism-answer">
+              <option value="Réponses au sexisme">Réponses au sexisme :</option>
+              <option
+                value="Le
+                féminisme
+                n’a
+                jamais
+                tué
+                personne.
+                Le
+                machisme
+                tue
+                tous
+                les
+                jours"
+              >
+                Le féminisme n’a jamais tué personne. Le machisme tue tous les
+                jours
+              </option>
+              <option
+                value="Le sexisme comme le racisme commence par la généralisation. C'est-à-dire la bêtise."
+              >
                 Le sexisme comme le racisme commence par la généralisation.
-
-                "C'est-à-dire la bêtise."<br />
-                
-                "1/3 des femmes dans le monde ont déjà subi des violences physiques
-                ou sexuelles." <br />
-                
-                "Le sexisme n'est pas une opinion, mais un délit."<br />
-                
-                "Le sexisme sert de manteau à l'ignorance, à la petitesse, aux
-                frustrations et aux aigreurs des personnes comme toi : complexées
-                et faibles d'esprit".<br />
-
-                "94,4 % des accidents de voiture mortels sont imputables à des
-                hommes".<br />
-                
-                "Les femmes demandent des promotions et des augmentations aussi
-                souvent que les hommes : 31% des femmes vs. 29% des
-                hommes tous les deux ans." <br />
-                
-                "Si la totalité du travail de soin non rémunéré effectué par les
-                femmes dans le monde était réalisée par une entreprise, cette dernière 
-                aurait un chiffre d’affaires de 10 000 milliards de dollars, soit 43 fois 
-                celui d’Apple." <br />
-
-                "Personne n’est plus arrogant envers les femmes, plus agressif et
-                méprisant, qu’un homme inquiet pour sa virilité."<br />
-              </p>
-            </details>
-
-            <details>
-              <summary class="homophobie">Réponses anti-homophobes</summary>
-              <p>
-                "L'homophobie n'est pas une opinion, mais un délit."<br />
-
-                "L'homophobie sert de manteau à l'ignorance, à la petitesse, aux
+                C'est-à-dire la bêtise.
+              </option>
+              <option value="Le sexisme n'est pas une opinion, mais un délit.">
+                Le sexisme n'est pas une opinion, mais un délit.
+              </option>
+              <option
+                value="Le sexisme sert de manteau à l'ignorance, à la petitesse, aux frustrations et aux aigreurs des personnes comme toi : complexées et faibles d'esprit."
+              >
+                Le sexisme sert de manteau à l'ignorance, à la petitesse, aux
                 frustrations et aux aigreurs des personnes comme toi :
-                complexées et faibles d'esprit."<br />
+                complexées et faibles d'esprit.
+              </option>
+              <option
+                value="Personne n’est plus arrogant envers les femmes, plus agressif et méprisant, qu’un homme inquiet pour sa virilité."
+              >
+                Personne n’est plus arrogant envers les femmes, plus agressif et
+                méprisant, qu’un homme inquiet pour sa virilité.
+              </option>
+              <option
+                value="1/3 des femmes dans le monde ont déjà subi des violences physiques ou sexuelles."
+              >
+                1/3 des femmes dans le monde ont déjà subi des violences
+                physiques ou sexuelles.
+              </option>
+              <option
+                value="94,4 % des accidents de voiture mortels sont imputables à des hommes"
+              >
+                94,4 % des accidents de voiture mortels sont imputables à des
+                hommes
+              </option>
+              <option
+                value="Les femmes demandent des promotions et des augmentations aussi souvent que les hommes : 31% des femmes vs. 29% des hommes tous les deux ans."
+              >
+                Les femmes demandent des promotions et des augmentations aussi
+                souvent que les hommes : 31% des femmes vs. 29% des hommes tous
+                les deux ans.
+              </option>
+              <option
+                value="Si la totalité du travail de soin non rémunéré effectué par les femmes dans le monde était réalisée par une entreprise, cette dernière femmes dans le monde était réalisée par une entreprise, cette dernière aurait un chiffre d’affaires de 10 000 milliards de dollars, soit 43 fois celui d’Apple."
+              >
+                Si la totalité du travail de soin non rémunéré effectué par les
+                femmes dans le monde était réalisée par une entreprise, cette
+                dernière aurait un chiffre d’affaires de 10 000 milliards de
+                dollars, soit 43 fois celui d’Apple.
+              </option>
+              <option
+                value="En Europe, les femmes consacrent en moyenne 22 heures par semaine à des tâches familiales et domestiques, les hommes 9 heures."
+              >
+                En Europe, les femmes consacrent en moyenne 22 heures par
+                semaine à des tâches familiales et domestiques, les hommes 9
+                heures.
+              </option>
+            </select>
 
-                "Léonard de Vinci était donc un dégénéré, tout comme Michel-Ange, Le Caravage ou Shakespeare pour ne citer qu'eux. 
-                Avouez qu'il aurait tout de même été dommage de se priver de ces pervers et ces dégénérés et que l'histoire humaine 
-                aurait sans doute été moins riche sans eux..."<br />
-              </p>
-            </details>
+            <script>
+              $("#sexism-answer").on("change", function () {
+                var value = `<input value="${$(this).val()}" id="selVal" />`;
+                $(value).insertAfter("#sexism-answer");
+                $("#selVal").select();
+                document.execCommand("Copy");
+                $("body").find("#selVal").remove();
+              });
+            </script>
 
-            <details>
-              <summary class="racisme">Réponses anti-racistes</summary>
-              <p>
-                "Le racisme est la forme simple de protection des simples
-                d'esprit."<br />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <select id="homophobia-answer">
+              <option value="Réponses à l'homophobie">
+                Réponses à l'homophobie :
+              </option>
+              <option
+                value="L'homophobie n'est pas une opinion, mais un délit."
+              >
+                L'homophobie n'est pas une opinion, mais un délit.
+              </option>
+              <option
+                value="L'homophobie sert de manteau à l'ignorance, à la petitesse, aux frustrations et aux aigreurs des personnes comme toi : complexées et faibles d'esprit."
+              >
+                L'homophobie sert de manteau à l'ignorance, à la petitesse, aux
+                frustrations et aux aigreurs des personnes comme toi :
+                complexées et faibles d'esprit.
+              </option>
+              <option
+                value="Léonard de Vinci était donc un dégénéré, tout comme Michel-Ange, Le Caravage ou Shakespeare pour ne citer qu'eux. Avouez qu'iel aurait tout de même été dommage de se priver de ces pervers et ces dégénérés et que l'histoire humaine aurait sans doute été moins riche sans eux..."
+              >
+                Léonard de Vinci était donc un dégénéré, tout comme Michel-Ange,
+                Le Caravage ou Shakespeare pour ne citer qu'eux. Avouez qu'iel
+                aurait tout de même été dommage de se priver de ces pervers et
+                ces dégénérés et que l'histoire humaine aurait sans doute été
+                moins riche sans eux...
+              </option>
+            </select>
 
-                "Le racisme n'est pas une opinion, mais un délit."<br />
+            <script>
+              $("#homophobia-answer").on("change", function () {
+                var value = `<input value="${$(this).val()}" id="selVal" />`;
+                $(value).insertAfter("#homophobia-answer");
+                $("#selVal").select();
+                document.execCommand("Copy");
+                $("body").find("#selVal").remove();
+              });
+            </script>
 
-                "Le racisme sert de manteau à l'ignorance, à la petitesse, aux
-                frustrations et aux aigreurs des personnes comme toi : complexées
-                et faibles d'esprit."<br />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <select id="racism-answer">
+              <option value="Réponses au racisme">Réponses au racisme :</option>
+              <option
+                value="Le racisme est la forme simple de protection des simples d'esprit."
+              >
+                Le racisme est la forme simple de protection des simples
+                d'esprit.
+              </option>
+              <option value="Le racisme n'est pas une opinion, mais un délit.">
+                Le racisme n'est pas une opinion, mais un délit.
+              </option>
+              <option
+                value="Le racisme sert de manteau à l'ignorance, à la petitesse, aux frustrations et aux aigreurs des personnes comme toi : complexées et faibles d'esprit."
+              >
+                Le racisme sert de manteau à l'ignorance, à la petitesse, aux
+                frustrations et aux aigreurs des personnes comme toi :
+                complexées et faibles d'esprit.
+              </option>
+              <option
+                value="Une société qui intègre le racisme n'est que le nouveau chef d'orchestre de la symphonie du chaos"
+              >
+                Une société qui intègre le racisme n'est que le nouveau chef
+                d'orchestre de la symphonie du chaos
+              </option>
+            </select>
 
-                "Une société qui intègre le racisme n'est que le nouveau chef
-                d'orchestre de la symphonie du chaos."<br />
-              </p>
-            </details>
+            <script>
+              $("#racism-answer").on("change", function () {
+                var value = `<input value="${$(this).val()}" id="selVal" />`;
+                $(value).insertAfter("#racism-answer");
+                $("#selVal").select();
+                document.execCommand("Copy");
+                $("body").find("#selVal").remove();
+              });
+            </script>
 
-            <details>
-              <summary class="générale">Réponses généralistes</summary>
-              <p>
-                <p>
-                  "Au championnat du monde de la connerie, tu finirais 2ème. Tu es
-                  trop con pour finir premier."<br />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <select id="choose-answer">
+              <option value="Réponses généralistes">
+                Réponses généralistes :
+              </option>
+              <option
+                value="Au championnat du monde de la connerie, tu finirais 2ème. Tu es trop con pour finir premier."
+              >
+                Au championnat du monde de la connerie, tu finirais 2ème. Tu es
+                trop con pour finir premier.
+              </option>
+              <option value="Au niveau bagage intellectuel, tu voyages léger">
+                Au niveau bagage intellectuel, tu voyages léger
+              </option>
+              <option
+                value="Comme disait mon grand-père tout les ans il y a de plus en plus de cons, mais cette année j'ai l'impression que les cons de l'année prochaine sont déjà là."
+              >
+                Comme disait mon grand-père tout les ans il y a de plus en plus
+                de cons, mais cette année j'ai l'impression que les cons de
+                l'année prochaine sont déjà là.
+              </option>
+              <option
+                value="Il faut avoir un certain talent pour être drôle, et tu en es complètement dénué"
+              >
+                Il faut avoir un certain talent pour être drôle, et tu en es
+                complètement dénué
+              </option>
+              <option
+                value="J’espère vraiment que le reste de ta journée sera aussi agréable que tu sais l’être."
+              >
+                J’espère vraiment que le reste de ta journée sera aussi agréable
+                que tu sais l’être.
+              </option>
+              <option
+                value="Je crois à l’équilibre de toute chose dans ce monde, mais sincèrement, je n’arrive pas à voir quelles qualités tu peux bien avoir pour compenser une telle bétise"
+              >
+                Je crois à l’équilibre de toute chose dans ce monde, mais
+                sincèrement, je n’arrive pas à voir quelles qualités tu peux
+                bien avoir pour compenser une telle bétise
+              </option>
+              <option
+                value="Je ne peux qu’être impressionné par la patience dont font preuve ceux qui doivent se coltiner ta présence au quotidien."
+              >
+                Je ne peux qu’être impressionné par la patience dont font preuve
+                ceux qui doivent se coltiner ta présence au quotidien.
+              </option>
+              <option
+                value="Le doute est l'apanage des gens intelligents, les cons comme toi n'ont que des certitudes."
+              >
+                Le doute est l'apanage des gens intelligents, les cons comme toi
+                n'ont que des certitudes.
+              </option>
+              <option
+                value="Les gens ont l'air de croire que le vide de leur cerveau leur meuble les couilles."
+              >
+                Les gens ont l'air de croire que le vide de leur cerveau leur
+                meuble les couilles.
+              </option>
+              <option
+                value="Moi j’aime beaucoup le port du masque, ça camoufle les effluves de pourriture qui émanent de ta bouche dès que tu l'ouvres"
+              >
+                Moi j’aime beaucoup le port du masque, ça camoufle les effluves
+                de pourriture qui émanent de ta bouche dès que tu l'ouvres
+              </option>
+              <option value="Patient zéro de la connerie">
+                Patient zéro de la connerie
+              </option>
+              <option
+                value="Quand on mettra les cons sur orbite, t'as pas fini de tourner."
+              >
+                Quand on mettra les cons sur orbite, t'as pas fini de tourner.
+              </option>
+              <option
+                value="Regarde où tu mets les pieds, tu risques de marcher sur la merde que tu es en train de raconter"
+              >
+                Regarde où tu mets les pieds, tu risques de marcher sur la merde
+                que tu es en train de raconter
+              </option>
+              <option
+                value="Si l’intelligence, la subtilité et la finesse d’esprit ne sont pas tes points forts, alors tu pourrais au moins tenter de te démarquer par ta discrétion ?"
+              >
+                Si l’intelligence, la subtilité et la finesse d’esprit ne sont
+                pas tes points forts, alors tu pourrais au moins tenter de te
+                démarquer par ta discrétion ?
+              </option>
+              <option
+                value="T'es aussi agréable et désiré dans cette conversation qu'un poil de cul dans mon cookie"
+              >
+                T'es aussi agréable et désiré dans cette conversation qu'un poil
+                de cul dans mon cookie
+              </option>
+              <option
+                value="Ton avis est aussi utile qu'un soutien-george en période de confinement"
+              >
+                Ton avis est aussi utile qu'un soutien-george en période de
+                confinement
+              </option>
+              <option
+                value="Tu es aussi brillant qu’un trou noir, et au moins deux fois plus lourd."
+              >
+                Tu es aussi brillant qu’un trou noir, et au moins deux fois plus
+                lourd.
+              </option>
+              <option
+                value="Tu es la raison pour laquelle ils sont obligés de nous mettre des panneaux indiquant le danger sur les lignes à haute tension et au bord des précipices."
+              >
+                Tu es la raison pour laquelle ils sont obligés de nous mettre
+                des panneaux indiquant le danger sur les lignes à haute tension
+                et au bord des précipices.
+              </option>
+              <option
+                value="Tu éteins en moi la plus infime lueur d'espoir en l'avenir du monde"
+              >
+                Tu éteins en moi la plus infime lueur d'espoir en l'avenir du
+                monde
+              </option>
+              <option value="Tu fais avancer l'horloge de l'Apocalypse">
+                Tu fais avancer l'horloge de l'Apocalypse
+              </option>
+            </select>
 
-                  "Au niveau bagage intellectuel, tu voyages léger."<br />
-
-                  "Comme disait mon grand-père tout les ans il y a de plus en plus de
-                  cons, mais cette année j'ai l'impression que les cons de l'année
-                  prochaine sont déjà là."<br />
-
-                  "Il faut avoir un certain talent pour être drôle, et tu en es
-                  complètement dénué."<br />
-
-                  "Je crois à l’équilibre de toute chose dans ce monde, mais
-                  sincèrement, je n’arrive pas à voir quelles qualités tu peux bien
-                  avoir pour compenser une telle stupidité."<br />
-
-                  "Je ne peux qu’être impressionné par la patience dont font preuve
-                  ceux qui doivent se coltiner ta présence au quotidien."<br />
-                  
-                  "Le doute est l'apanage des gens intelligents, les abrutis comme toi
-                  n'ont que des certitudes."<br />
-    
-                  "Les gens ont l'air de croire que le vide de leur cerveau leur
-                  meuble les couilles."<br />
-                  
-                  "Moi j’aime beaucoup le port du masque, ça camoufle les effluves de
-                  pourriture qui émanent de ta bouche dès que tu l'ouvres<br />
-                  Patient zéro de la connerie."<br />
-
-                  "Quand on mettra les cons sur orbite, t'as pas fini de tourner."<br />
-                  
-                  "Regarde où tu mets les pieds, tu risques de marcher sur la merde
-                  que tu es en train de raconter."<br />
-                  
-                  "Si l’intelligence, la subtilité et la finesse d’esprit ne sont pas
-                  tes points forts, alors tu pourrais au moins tenter de te
-                  démarquer par ta discrétion ?"<br />
-
-                  "T'es aussi agréable et désiré dans cette conversation qu'un poil
-                  de cul dans mon cookie." <br />
-                  
-                  "Ton avis est aussi utile qu'un soutien-george en période de
-                  confinement."<br />
-
-                  "Tu es aussi brillant qu’un trou noir, et au moins deux fois plus
-                  lourd."<br />
-
-                  "Tu es la raison pour laquelle ils sont obligés de nous mettre des
-                  panneaux indiquant le danger sur les lignes à haute tension et au
-                  bord des précipices."<br />
-
-                  "Tu éteins en moi la plus infime lueur d'espoir en l'avenir du
-                  monde."<br />
-                  
-                  "Tu fais avancer l'horloge de l'Apocalypse."<br />
-                </p>
-              </p>
-            </details>
-
-            
+            <script>
+              $("#choose-answer").on("change", function () {
+                var value = `<input value="${$(this).val()}" id="selVal" />`;
+                $(value).insertAfter("#choose-answer");
+                $("#selVal").select();
+                document.execCommand("Copy");
+                $("body").find("#selVal").remove();
+              });
+            </script>
           </div>
         </details>
       </div>
