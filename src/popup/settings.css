@@ -284,14 +284,14 @@ form {
 
 .answers {
   padding: 0;
-  margin: 0;
+  margin-top: 10px;
   border: 1px solid #e9e2d7;
   width: 100%;
   border-radius: 5px;
   overflow: hidden;
-  background-color: #e9e2d7;
-  background: #e9e2d7;
+  background-color: rgb(255, 255, 255, 0.3);
   position: relative;
+  font-family: "Poppins";
 }
 .answers select {
   padding: 5px 8px;
@@ -303,6 +303,7 @@ form {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  font-family: "Poppins";
 }
 .answers :after {
   top: 50%;
@@ -322,3 +323,7 @@ form {
 .answers select:focus {
   outline: none;
 }
+
+/* .masqueHaine {
+  margin-top: 74px;
+} */
