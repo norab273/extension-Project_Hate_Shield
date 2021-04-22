@@ -239,11 +239,13 @@ function replaceText(node) {
     }
 
     let content = node.textContent;
-
+    console.log(document);
     for (let [element, emoji] of dictionary) {
       let regex = regexsEmo.get(element);
 
-      content = content.sansAccents().replace(regex, emoji);
+      if (!document.getElementById("badWordsList")) {
+        content = content.sansAccents().replace(regex, emoji);
+      }
     }
 
     node.textContent = content;
@@ -266,10 +268,10 @@ replaceText(document.body);
 function replaceTextIncl(node) {
   if (node.nodeType === Node.TEXT_NODE) {
     if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
-      console.log("replaceTextIncl");
+      //console.log("replaceTextIncl");
     }
 
-    console.log("replaceTextIncl2");
+    //console.log("replaceTextIncl2");
 
     let content = node.textContent;
 
