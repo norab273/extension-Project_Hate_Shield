@@ -15,17 +15,27 @@
   <body>
     <div class="popup">
       <div class="content">
+      
+      <!-- <hr>
+      <section>
+          <label for="get-key">Key:</label>
+          <input type="text" id="get-key" value="r2d2">
+          <button type="button" id="get-local">Get from localStorage</button>
+          <output id="output"></output>
+      </section>
+      <hr> -->
+      
         <h2>Ecriture Inclusive 🌸</h2>
         <div class="onoffswitch">
           <input
             type="checkbox"
-            name="onoffswitch"
+            name="inclusiveWritingSwitch"
             class="onoffswitch-checkbox"
-            id="myonoffswitch"
+            id="inclusiveWritingSwitch"
             tabindex="0"
             checked
           />
-          <label class="onoffswitch-label" for="myonoffswitch">
+          <label class="onoffswitch-label" for="inclusiveWritingSwitch">
             <span class="onoffswitch-inner"></span>
             <span class="onoffswitch-switch"></span>
           </label>
@@ -33,8 +43,8 @@
         <hr />
         <h2>Masque la haine en ligne 🌸</h2>
         <div class="onoffswitch2">
-          <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" tabindex="0" checked>
-          <label class="onoffswitch2-label" for="myonoffswitch2">
+          <input type="checkbox" name="emojiReplaceSwitch" class="onoffswitch2-checkbox" id="emojiReplaceSwitch" tabindex="0" checked>
+          <label class="onoffswitch2-label" for="emojiReplaceSwitch">
               <span class="onoffswitch2-inner"></span>
               <span class="onoffswitch2-switch"></span>
           </label>
@@ -54,7 +64,7 @@
         </div>
         <hr>
         <h2>Réponds à la haine 🌸</h2>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
         <select id="choose-answer">
           <option value="Choisis">Choisis une réponse :</option>
           <option

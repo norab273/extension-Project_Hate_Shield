@@ -102,10 +102,10 @@ reset.onclick = function () {
 //               * Removed: ${changeInfo.removed}`);
 // });
 
-$("#choose-answer").on("change", function () {
-  var value = `<input value="${$(this).val()}" id="selVal" />`;
-  $(value).insertAfter("#choose-answer");
-  $("#selVal").select();
-  document.execCommand("Copy");
-  $("body").find("#selVal").remove();
-});
+// $("#choose-answer").on("change", function () {
+//   var value = `<input value="${$(this).val()}" id="selVal" />`;
+//   $(value).insertAfter("#choose-answer");
+//   $("#selVal").select();
+//   document.execCommand("Copy");
+//   $("body").find("#selVal").remove();
+// });
