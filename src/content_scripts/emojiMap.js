@@ -199,6 +199,10 @@ dictionaryInclusiveWriting.set("développeur", "développeur.euse");
 
 browser.runtime.onMessage.addListener(addToDictionary);
 
+// Setting regexs so that the world replaced :
+// 1. are not part of a longer word,
+// 2. are not case and accent sensitive
+
 //function that replaces letters with accents
 String.prototype.sansAccents = function () {
   return this.replace(/[ùûü]/g, "u")
@@ -218,21 +222,22 @@ for (let element of dictionaryBadWords.keys()) {
   );
 }
 
+let regexInclusiveWriting = new Map();
+for (let element of dictionaryInclusiveWriting.keys()) {
+  regexInclusiveWriting.set(element, new RegExp("\\b" + element + "\\b", "gi"));
+}
+
+// The user can add new words to dictionnary
+
 function addToDictionary(request) {
   if (request.word) {
     dictionaryBadWords.set(request.word, "🌸");
     regexBadWords.set(
       request.word,
-      //new RegExp("^" + request.color + "$" + "[:space:]*", "gi")
       new RegExp("\\b" + request.word + "\\b", "gi")
     );
     replaceText(document.body);
   }
-}
-
-let regexInclusiveWriting = new Map();
-for (let element of dictionaryInclusiveWriting.keys()) {
-  regexInclusiveWriting.set(element, new RegExp("\\b" + element + "\\b", "gi"));
 }
 
 function replaceText(node) {
@@ -299,63 +304,65 @@ observer.observe(document.body, {
   subtree: true,
 });
 
-function storageAvailable(type) {
-  try {
-    var storage = window[type],
-      x = "__storage_test__";
-    storage.setItem(x, x);
-    storage.removeItem(x);
-    return true;
-  } catch (e) {
-    return (
-      e instanceof DOMException &&
-      // everything except Firefox
-      (e.code === 22 ||
-        // Firefox
-        e.code === 1014 ||
-        // test name field too, because code might not be present
-        // everything except Firefox
-        e.name === "QuotaExceededError" ||
-        // Firefox
-        e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-      // acknowledge QuotaExceededError only if there's something already stored
-      storage.length !== 0
-    );
-  }
-}
+// on/off button to activate replaceText()
 
-const inclusiveWritingCheckbox = document.getElementById(
-  "inclusiveWritingSwitch"
-);
+// function storageAvailable(type) {
+//   try {
+//     var storage = window[type],
+//       x = "__storage_test__";
+//     storage.setItem(x, x);
+//     storage.removeItem(x);
+//     return true;
+//   } catch (e) {
+//     return (
+//       e instanceof DOMException &&
+//       // everything except Firefox
+//       (e.code === 22 ||
+//         // Firefox
+//         e.code === 1014 ||
+//         // test name field too, because code might not be present
+//         // everything except Firefox
+//         e.name === "QuotaExceededError" ||
+//         // Firefox
+//         e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
+//       // acknowledge QuotaExceededError only if there's something already stored
+//       storage.length !== 0
+//     );
+//   }
+// }
 
-if (storageAvailable("localStorage")) {
-  if (!localStorage.getItem("inclusiveWritingSwitch")) {
-    localStorage.setItem("inclusiveWritingSwitch", "on");
-  }
-  if (localStorage.getItem("inclusiveWritingSwitch") === "on") {
-    document.getElementById("inclusiveWritingSwitch").checked = true;
-    replaceTextIncl(document.body);
-    console.log(document.body);
-  } else {
-    document.getElementById("inclusiveWritingSwitch").checked = false;
-  }
-} else {
-  console.log("not available - msg user");
-}
+// const inclusiveWritingCheckbox = document.getElementById(
+//   "inclusiveWritingSwitch"
+// );
 
-inclusiveWritingCheckbox.addEventListener("change", function (e) {
-  if (localStorage.getItem("inclusiveWritingSwitch") === "on") {
-    localStorage.setItem("inclusiveWritingSwitch", "off");
-    replaceTextIncl();
-  } else {
-    localStorage.setItem("inclusiveWritingSwitch", "on");
-    replaceTextIncl(document.body);
-    console.log(document.body);
-    console.log("replace text ok");
-  }
-});
+// if (storageAvailable("localStorage")) {
+//   // if (!localStorage.getItem("inclusiveWritingSwitch")) {
+//   //   localStorage.setItem("inclusiveWritingSwitch", "off");
+//   // }
+//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
+//     document.getElementById("inclusiveWritingSwitch").checked = true;
+//     replaceTextIncl(document.body);
+//   } else {
+//     document.getElementById("inclusiveWritingSwitch").checked = false;
+//   }
+// } else {
+//   console.log("not available - msg user");
+// }
+
+// inclusiveWritingCheckbox.addEventListener("change", function (e) {
+//   console.log("listener checkbox");
+//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
+//     storage.setItem("inclusiveWritingSwitch", "off");
+//   } else {
+//     storage.setItem("inclusiveWritingSwitch", "on");
+//   }
+// });
 
 // window.addEventListener("storage", function (e) {
-//   console.log("get outside");
-//   console.log(localStorage.getItem("inclusiveWritingSwitch"));
+//   console.log("listener storage");
+//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
+//     replaceTextIncl(document.body);
+//   } else {
+//     replaceTextIncl();
+//   }
 // });
