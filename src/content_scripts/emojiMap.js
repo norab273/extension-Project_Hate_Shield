@@ -247,7 +247,6 @@ function replaceText(node) {
     }
 
     let content = node.textContent;
-    console.log(document);
     for (let [element, emoji] of dictionaryBadWords) {
       let regex = regexBadWords.get(element);
 
