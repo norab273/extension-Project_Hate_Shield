@@ -4,13 +4,11 @@ var settings = document.querySelector(".settings");
 
 var inputWord = document.querySelector(".new-note input");
 var container = document.querySelector(".note-container");
-var clearBtn = document.querySelector(".clear");
 var addBtn = document.querySelector(".add");
 
 /*  add event listeners to buttons */
 
 addBtn.addEventListener("click", addNote);
-clearBtn.addEventListener("click", clearAll);
 
 /* generic error handler */
 function onError(error) {
@@ -35,6 +33,10 @@ function initialize() {
 /* Add a note to the display, and storage */
 
 function addNote() {
+  var gettingWords = browser.storage.local.get("userWords");
+  gettingWords.then((result) => {
+    addWord(inputWord.value, result);
+  }, onError);
   var noteTitle = "word" + Math.random();
   var noteBody = inputWord.value;
   var gettingItem = browser.storage.local.get(noteTitle);
@@ -45,6 +47,25 @@ function addNote() {
       storeNote(noteTitle, noteBody);
     }
   }, onError);
+}
+
+function addWord(word, localStorage) {
+  var words = getWords(localStorage);
+  words.push(word);
+  var JSONwords = JSON.stringify(words);
+  console.log("words :" + words);
+  storeNote("userWords", JSONwords);
+}
+
+function getWords(localStorage) {
+  try {
+    var words = JSON.parse(localStorage);
+    console.log("words get :" + words);
+    return words;
+  } catch (e) {
+    console.error("Parsing error:", e);
+    return [];
+  }
 }
 
 //gets active tab
@@ -131,13 +152,4 @@ function displayNote(title, body) {
 
   container.appendChild(note);
   noteEdit.style.display = "none";
-}
-
-/* Clear all notes from the display/storage */
-
-function clearAll() {
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
-  browser.storage.local.clear();
 }

@@ -98,106 +98,21 @@ dictionaryBadWords.set("vieille-peau", "🌸");
 dictionaryBadWords.set("youpin", "🌸");
 dictionaryBadWords.set("youpine", "🌸");
 
-let dictionaryInclusiveWriting = new Map();
-dictionaryInclusiveWriting.set("de nombreux", "de multiples");
-dictionaryInclusiveWriting.set("de nombreuses", "de multiples");
-dictionaryInclusiveWriting.set("les droits de l'Homme", "les droits humains");
-dictionaryInclusiveWriting.set("homme politique", "personnalité politique");
-dictionaryInclusiveWriting.set("celui qui", "quiconque");
-dictionaryInclusiveWriting.set("Madame le préfet", "Madame la préfète");
-dictionaryInclusiveWriting.set("Madame le directeur", "Madame la directrice");
-dictionaryInclusiveWriting.set("Madame le sénateur", "Madame la sénatrice");
-dictionaryInclusiveWriting.set("Madame le maire", "Madame la maire");
-dictionaryInclusiveWriting.set("femme de ménage", "personnel d'entretien");
-dictionaryInclusiveWriting.set("mademoiselle", "madame");
-dictionaryInclusiveWriting.set("il", "iel");
-dictionaryInclusiveWriting.set("elle", "iel");
-dictionaryInclusiveWriting.set("ils", "iels");
-dictionaryInclusiveWriting.set("elles", "iels");
-dictionaryInclusiveWriting.set("les sénateurs", "les membres du sénat");
-dictionaryInclusiveWriting.set(
-  "les parlementaires",
-  "les membres du parlement"
-);
-dictionaryInclusiveWriting.set(
-  "à la satisfaction de tous",
-  "à la satisfaction générale"
-);
-dictionaryInclusiveWriting.set("a été violée", "a été victime d'un viol");
-dictionaryInclusiveWriting.set("abus sexuel", "agression sexuelle");
-dictionaryInclusiveWriting.set("attouchement sexuel", "agression sexuelle");
-dictionaryInclusiveWriting.set("pour tous", "pour tout le monde");
-dictionaryInclusiveWriting.set("à tous", "à tout le monde");
-dictionaryInclusiveWriting.set("acheteur", "acheteur.euse");
-dictionaryInclusiveWriting.set("acteur", "acteur.rice");
-dictionaryInclusiveWriting.set("adhérent", "adhérent.e");
-dictionaryInclusiveWriting.set("adjoint", "adjoint.e");
-dictionaryInclusiveWriting.set("administrateur", "administrateur.rice");
-dictionaryInclusiveWriting.set("administré", "administré.e");
-dictionaryInclusiveWriting.set("agent", "agent.e");
-dictionaryInclusiveWriting.set("agriculteur", "agriculteur.rice");
-dictionaryInclusiveWriting.set("ambassadeur", "ambassadeur.rice");
-dictionaryInclusiveWriting.set("animateur", "animateur.rice");
-dictionaryInclusiveWriting.set("apprenti", "apprenti.e");
-dictionaryInclusiveWriting.set("artisan", "artisan.e");
-dictionaryInclusiveWriting.set("assistant", "assistant.e");
-dictionaryInclusiveWriting.set("attaché", "attaché.e");
-dictionaryInclusiveWriting.set("auteur", "auteur.rice");
-dictionaryInclusiveWriting.set("avocat", "avocat.e");
-dictionaryInclusiveWriting.set("banquier", "banquier.ère");
-dictionaryInclusiveWriting.set("chargé", "chargé.e");
-dictionaryInclusiveWriting.set("chef", "chef.fe");
-dictionaryInclusiveWriting.set("chercheur", "chercheur.e");
-dictionaryInclusiveWriting.set("chroniqueur", "chroniqueur.euse");
-dictionaryInclusiveWriting.set("citoyen", "citoyen.ne");
-dictionaryInclusiveWriting.set("commis", "commis.e");
-dictionaryInclusiveWriting.set("conseiller", "conseiller.ère");
-dictionaryInclusiveWriting.set("consommateur", "consommateur.rice");
-dictionaryInclusiveWriting.set("consultant", "consultant.e");
-dictionaryInclusiveWriting.set("délégué", "délégué.e");
-dictionaryInclusiveWriting.set("député", "député.e");
-dictionaryInclusiveWriting.set("diplômé", "diplômé.e");
-dictionaryInclusiveWriting.set("directeur", "directeur.rice");
-dictionaryInclusiveWriting.set("écolier", "écolier.ère");
-dictionaryInclusiveWriting.set("éducateur", "éducateur.rice");
-dictionaryInclusiveWriting.set("électeur", "électeur.rice");
-dictionaryInclusiveWriting.set("élu", "élu.e");
-dictionaryInclusiveWriting.set("entraineur", "entraineur.euse");
-dictionaryInclusiveWriting.set("entrepreneur", "entrepreneur.e");
-dictionaryInclusiveWriting.set("étudiant", "étudiant.e");
-dictionaryInclusiveWriting.set("footballeur", "footballeur.euse");
-dictionaryInclusiveWriting.set("gardien", "gardien.ne");
-dictionaryInclusiveWriting.set("gouverneur", "gouverneur.e");
-dictionaryInclusiveWriting.set("habitant", "habitant.e");
-dictionaryInclusiveWriting.set("hospitalier", "hospitalier.ère");
-dictionaryInclusiveWriting.set("ingénieur", "ingénieur.e");
-dictionaryInclusiveWriting.set("inspecteur", "inspecteur.rice");
-dictionaryInclusiveWriting.set("instituteur", "instituteur.rice");
-dictionaryInclusiveWriting.set("intellectuel", "intellectuel.le");
-dictionaryInclusiveWriting.set("lycéen", "lycéen.ne");
-dictionaryInclusiveWriting.set("médiateur", "médiateur.rice");
-dictionaryInclusiveWriting.set("modérateur", "modérateur.rice");
-dictionaryInclusiveWriting.set("officier", "officier.ère");
-dictionaryInclusiveWriting.set("policier", "policier.ère");
-dictionaryInclusiveWriting.set("président", "président.e");
-dictionaryInclusiveWriting.set("professeur", "professeur.e");
-dictionaryInclusiveWriting.set("professionnel", "professionnel.le");
-dictionaryInclusiveWriting.set("programmeur", "programmeur.euse");
-dictionaryInclusiveWriting.set("recteur", "recteur.rice");
-dictionaryInclusiveWriting.set("remplaçant", "remplaçant.e");
-dictionaryInclusiveWriting.set("retraité", "retraité.e");
-dictionaryInclusiveWriting.set("sénateur", "sénateur.rice");
-dictionaryInclusiveWriting.set("sénior", "sénior.e");
-dictionaryInclusiveWriting.set("sportif", "sportif.ve");
-dictionaryInclusiveWriting.set("suppléant", "suppléant.e");
-dictionaryInclusiveWriting.set("technicien", "technicien.ne");
-dictionaryInclusiveWriting.set("territorial", "territorial.e");
-dictionaryInclusiveWriting.set("transporteur", "transporteur.euse");
-dictionaryInclusiveWriting.set("travailleur", "travailleur.euse");
-dictionaryInclusiveWriting.set("usager", "usager.ère");
-dictionaryInclusiveWriting.set("développeur", "développeur.euse");
-
 browser.runtime.onMessage.addListener(addToDictionary);
+
+addNew();
+
+function addNew() {
+  var gettingAllStorageItems = browser.storage.local.get(null);
+  gettingAllStorageItems.then((results) => {
+    var noteKeys = Object.keys(results);
+    for (let noteKey of noteKeys) {
+      var curValue = results[noteKey];
+      addToDictionary(curValue);
+      console.log("value: " + curValue);
+    }
+  });
+}
 
 // Setting regexs so that the world replaced :
 // 1. are not part of a longer word,
@@ -220,11 +135,6 @@ for (let element of dictionaryBadWords.keys()) {
     element,
     new RegExp("\\b" + element.sansAccents() + "\\b", "gi")
   );
-}
-
-let regexInclusiveWriting = new Map();
-for (let element of dictionaryInclusiveWriting.keys()) {
-  regexInclusiveWriting.set(element, new RegExp("\\b" + element + "\\b", "gi"));
 }
 
 // The user can add new words to dictionnary
@@ -265,29 +175,6 @@ function replaceText(node) {
 
 replaceText(document.body);
 
-function replaceTextIncl(node) {
-  if (node.nodeType === Node.TEXT_NODE) {
-    if (node.parentNode && node.parentNode.nodeName === "TEXTAREA") {
-    }
-
-    let content = node.textContent;
-
-    for (let [element, inclWord] of dictionaryInclusiveWriting) {
-      let regex = regexInclusiveWriting.get(element);
-
-      content = content.replace(regex, inclWord);
-    }
-
-    node.textContent = content;
-  } else {
-    for (let i = 0; i < node.childNodes.length; i++) {
-      replaceTextIncl(node.childNodes[i]);
-    }
-  }
-}
-
-replaceTextIncl(document.body);
-
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.addedNodes && mutation.addedNodes.length > 0) {
@@ -302,66 +189,3 @@ observer.observe(document.body, {
   childList: true,
   subtree: true,
 });
-
-// on/off button to activate replaceText()
-
-// function storageAvailable(type) {
-//   try {
-//     var storage = window[type],
-//       x = "__storage_test__";
-//     storage.setItem(x, x);
-//     storage.removeItem(x);
-//     return true;
-//   } catch (e) {
-//     return (
-//       e instanceof DOMException &&
-//       // everything except Firefox
-//       (e.code === 22 ||
-//         // Firefox
-//         e.code === 1014 ||
-//         // test name field too, because code might not be present
-//         // everything except Firefox
-//         e.name === "QuotaExceededError" ||
-//         // Firefox
-//         e.name === "NS_ERROR_DOM_QUOTA_REACHED") &&
-//       // acknowledge QuotaExceededError only if there's something already stored
-//       storage.length !== 0
-//     );
-//   }
-// }
-
-// const inclusiveWritingCheckbox = document.getElementById(
-//   "inclusiveWritingSwitch"
-// );
-
-// if (storageAvailable("localStorage")) {
-//   // if (!localStorage.getItem("inclusiveWritingSwitch")) {
-//   //   localStorage.setItem("inclusiveWritingSwitch", "off");
-//   // }
-//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
-//     document.getElementById("inclusiveWritingSwitch").checked = true;
-//     replaceTextIncl(document.body);
-//   } else {
-//     document.getElementById("inclusiveWritingSwitch").checked = false;
-//   }
-// } else {
-//   console.log("not available - msg user");
-// }
-
-// inclusiveWritingCheckbox.addEventListener("change", function (e) {
-//   console.log("listener checkbox");
-//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
-//     storage.setItem("inclusiveWritingSwitch", "off");
-//   } else {
-//     storage.setItem("inclusiveWritingSwitch", "on");
-//   }
-// });
-
-// window.addEventListener("storage", function (e) {
-//   console.log("listener storage");
-//   if (storage.getItem("inclusiveWritingSwitch") === "on") {
-//     replaceTextIncl(document.body);
-//   } else {
-//     replaceTextIncl();
-//   }
-// });
