@@ -98,25 +98,34 @@ dictionaryBadWords.set("vieille-peau", "🌸");
 dictionaryBadWords.set("youpin", "🌸");
 dictionaryBadWords.set("youpine", "🌸");
 
-browser.runtime.onMessage.addListener(addToDictionary);
+browser.runtime.onMessage.addListener(addNew);
 
 addNew();
-
 function addNew() {
-  var gettingAllStorageItems = browser.storage.local.get(null);
-  gettingAllStorageItems.then((results) => {
-    var noteKeys = Object.keys(results);
-    for (let noteKey of noteKeys) {
-      var curValue = results[noteKey];
-      addToDictionary(curValue);
-      console.log("value: " + curValue);
+  console.log("⚠️");
+  var gettingWords = browser.storage.local.get(null);
+  console.log("‼️");
+  gettingWords.then((result) => {
+    // var words = getWords(result["userWords"]);
+    console.log("💠");
+    var words = JSON.parse(result["userWords"]);
+    console.log("words ✅: " + words);
+    for (let word of words) {
+      addToDictionary(word);
+      console.log("word ❓: " + word);
     }
-  });
-}
+    replaceText(document.body);
 
-// Setting regexs so that the world replaced :
-// 1. are not part of a longer word,
-// 2. are not case and accent sensitive
+    getActiveTab()
+      .then((tabs) => {
+        console.log(tabs);
+        console.log(tabs.find((tab) => tab.active).id);
+        currentTabId = tabs.find((tab) => tab.active).id;
+        replaceText(document.body);
+      })
+      .catch((err) => console.log(err));
+  }, onError);
+}
 
 //function that replaces letters with accents
 String.prototype.sansAccents = function () {
@@ -137,16 +146,17 @@ for (let element of dictionaryBadWords.keys()) {
   );
 }
 
+//gets active tab
+function getActiveTab() {
+  return browser.tabs.query({ active: true, currentWindow: true });
+}
+
 // The user can add new words to dictionnary
 
-function addToDictionary(request) {
-  if (request.word) {
-    dictionaryBadWords.set(request.word, "🌸");
-    regexBadWords.set(
-      request.word,
-      new RegExp("\\b" + request.word + "\\b", "gi")
-    );
-    replaceText(document.body);
+function addToDictionary(word) {
+  if (word) {
+    dictionaryBadWords.set(word, "🌸");
+    regexBadWords.set(word, new RegExp("\\b" + word + "\\b", "gi"));
   }
 }
 

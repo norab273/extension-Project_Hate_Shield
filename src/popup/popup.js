@@ -33,25 +33,19 @@ function initialize() {
 /* Add a note to the display, and storage */
 
 function addNote() {
-  var gettingWords = browser.storage.local.get("userWords");
-  gettingWords.then((result) => {
-    addWord(inputWord.value, result);
-  }, onError);
-  var noteTitle = "word" + Math.random();
   var noteBody = inputWord.value;
-  var gettingItem = browser.storage.local.get(noteTitle);
-  gettingItem.then((result) => {
-    var objTest = Object.keys(result);
-    if (objTest.length < 1 && noteBody !== "") {
-      inputWord.value = "";
-      storeNote(noteTitle, noteBody);
-    }
+  var gettingWords = browser.storage.local.get(null);
+  gettingWords.then((result) => {
+    addWord(noteBody, result["userWords"]);
+    console.log("input 🎃 : " + inputWord);
   }, onError);
 }
 
 function addWord(word, localStorage) {
   var words = getWords(localStorage);
   words.push(word);
+  console.log("word 👽 :" + word);
+  console.log("words 😈 :" + words);
   var JSONwords = JSON.stringify(words);
   console.log("words :" + words);
   storeNote("userWords", JSONwords);
@@ -59,6 +53,7 @@ function addWord(word, localStorage) {
 
 function getWords(localStorage) {
   try {
+    console.log("parse 🤓 :" + localStorage);
     var words = JSON.parse(localStorage);
     console.log("words get :" + words);
     return words;
