@@ -100,31 +100,14 @@ dictionaryBadWords.set("youpine", "🌸");
 
 browser.runtime.onMessage.addListener(addNew);
 
-addNew();
-function addNew() {
-  console.log("⚠️");
-  var gettingWords = browser.storage.local.get(null);
-  console.log("‼️");
-  gettingWords.then((result) => {
-    // var words = getWords(result["userWords"]);
-    console.log("💠");
-    var words = JSON.parse(result["userWords"]);
-    console.log("words ✅: " + words);
-    for (let word of words) {
-      addToDictionary(word);
-      console.log("word ❓: " + word);
-    }
-    replaceText(document.body);
-
-    getActiveTab()
-      .then((tabs) => {
-        console.log(tabs);
-        console.log(tabs.find((tab) => tab.active).id);
-        currentTabId = tabs.find((tab) => tab.active).id;
-        replaceText(document.body);
-      })
-      .catch((err) => console.log(err));
-  }, onError);
+addNew([]);
+function addNew(words) {
+  console.log("✽" + words);
+  for (let word of words) {
+    addToDictionary(word);
+    console.log("word ❓: " + word);
+  }
+  replaceText(document.body);
 }
 
 //function that replaces letters with accents

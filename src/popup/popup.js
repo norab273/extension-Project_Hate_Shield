@@ -1,66 +1,66 @@
-var settings = document.querySelector(".settings");
-
 /* initialise variables */
-
-var inputWord = document.querySelector(".new-note input");
-var container = document.querySelector(".note-container");
+var settings = document.querySelector(".settings");
+var inputWord = document.querySelector(".new-word input");
+var container = document.querySelector(".word-container");
 var addBtn = document.querySelector(".add");
 
 /*  add event listeners to buttons */
 
-addBtn.addEventListener("click", addNote);
+addBtn.addEventListener("click", addUserWordtoStorage);
 
 /* generic error handler */
 function onError(error) {
   console.log(error);
 }
 
-/* display previously-saved stored notes on startup */
+/* display previously-saved stored words on startup */
 
 initialize();
 
 function initialize() {
   var gettingAllStorageItems = browser.storage.local.get(null);
   gettingAllStorageItems.then((results) => {
-    var noteKeys = Object.keys(results);
-    for (let noteKey of noteKeys) {
-      var curValue = results[noteKey];
-      displayNote(noteKey, curValue);
+    var wordKeys = Object.keys(results);
+    for (let wordKey of wordKeys) {
+      var curValue = results[wordKey];
+      displayWord(wordKey, curValue);
     }
   }, onError);
 }
 
-/* Add a note to the display, and storage */
+/* Add a word to the display, and storage */
 
-function addNote() {
-  var noteBody = inputWord.value;
-  var gettingWords = browser.storage.local.get(null);
-  gettingWords.then((result) => {
-    addWord(noteBody, result["userWords"]);
-    console.log("input 🎃 : " + inputWord);
-  }, onError);
-}
-
-function addWord(word, localStorage) {
-  var words = getWords(localStorage);
-  words.push(word);
-  console.log("word 👽 :" + word);
-  console.log("words 😈 :" + words);
-  var JSONwords = JSON.stringify(words);
-  console.log("words :" + words);
-  storeNote("userWords", JSONwords);
-}
-
-function getWords(localStorage) {
+function getWordsFromStorageInArray(localStorage) {
   try {
-    console.log("parse 🤓 :" + localStorage);
     var words = JSON.parse(localStorage);
-    console.log("words get :" + words);
     return words;
   } catch (e) {
     console.error("Parsing error:", e);
     return [];
   }
+}
+
+function addUserWordtoStorage() {
+  var word = inputWord.value;
+  var gettingWords = browser.storage.local.get(null);
+  gettingWords.then((result) => {
+    addUserWordToArrayAndStringify(word, result["userWords"]);
+  }, onError);
+}
+
+function addUserWordToArrayAndStringify(word, localStorage) {
+  var words = getWordsFromStorageAndStoreInArray(localStorage);
+  words.push(word);
+  var JSONwords = JSON.stringify(words);
+  storeWordAndSendIt("userWords", JSONwords);
+}
+
+function storeWordAndSendIt(title, body) {
+  var storingWord = browser.storage.local.set({ [title]: body });
+  storingWord.then(() => {
+    displayWord(title, body);
+    browser.tabs.sendMessage(currentTabId, { body });
+  }, onError);
 }
 
 //gets active tab
@@ -78,39 +78,29 @@ getActiveTab()
   })
   .catch((err) => console.log(err));
 
-/* function to store a new note in storage */
+/* function to display a word in the word box */
 
-function storeNote(title, body) {
-  var storingNote = browser.storage.local.set({ [title]: body });
-  storingNote.then(() => {
-    displayNote(title, body);
-    browser.tabs.sendMessage(currentTabId, { [title]: body });
-  }, onError);
-}
-
-/* function to display a note in the note box */
-
-function displayNote(title, body) {
-  /* create note display box */
-  var note = document.createElement("div");
-  var noteDisplay = document.createElement("div");
-  var notePara = document.createElement("p");
+function displayWord(title, body) {
+  /* create word display box */
+  var word = document.createElement("div");
+  var wordDisplay = document.createElement("div");
+  var wordPara = document.createElement("p");
   var deleteBtn = document.createElement("button");
   var clearFix = document.createElement("div");
   var title = "newWord" + Math.random();
 
-  note.setAttribute("class", "note");
+  word.setAttribute("class", "word");
 
-  notePara.textContent = body;
+  wordPara.textContent = body;
   deleteBtn.setAttribute("class", "delete");
   deleteBtn.textContent = "Supprimer";
   clearFix.setAttribute("class", "clearfix");
 
-  noteDisplay.appendChild(notePara);
-  noteDisplay.appendChild(deleteBtn);
-  noteDisplay.appendChild(clearFix);
+  wordDisplay.appendChild(wordPara);
+  wordDisplay.appendChild(deleteBtn);
+  wordDisplay.appendChild(clearFix);
 
-  note.appendChild(noteDisplay);
+  word.appendChild(wordDisplay);
 
   /* set up listener for the delete functionality */
 
@@ -122,29 +112,29 @@ function displayNote(title, body) {
     browser.storage.local.remove(title);
   });
 
-  /* create note edit box */
-  var noteEdit = document.createElement("div");
-  var noteBodyEdit = document.createElement("textarea");
+  /* create word edit box */
+  var wordEdit = document.createElement("div");
+  var wordBodyEdit = document.createElement("textarea");
   var clearFix2 = document.createElement("div");
 
   var updateBtn = document.createElement("button");
   var cancelBtn = document.createElement("button");
 
   updateBtn.setAttribute("class", "update");
-  updateBtn.textContent = "Update note";
+  updateBtn.textContent = "Update word";
   cancelBtn.setAttribute("class", "cancel");
   cancelBtn.textContent = "Cancel update";
 
-  noteEdit.appendChild(noteBodyEdit);
-  noteBodyEdit.textContent = body;
-  noteEdit.appendChild(updateBtn);
-  noteEdit.appendChild(cancelBtn);
+  wordEdit.appendChild(wordBodyEdit);
+  wordBodyEdit.textContent = body;
+  wordEdit.appendChild(updateBtn);
+  wordEdit.appendChild(cancelBtn);
 
-  noteEdit.appendChild(clearFix2);
+  wordEdit.appendChild(clearFix2);
   clearFix2.setAttribute("class", "clearfix");
 
-  note.appendChild(noteEdit);
+  word.appendChild(wordEdit);
 
-  container.appendChild(note);
-  noteEdit.style.display = "none";
+  container.appendChild(word);
+  wordEdit.style.display = "none";
 }

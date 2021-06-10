@@ -34,6 +34,7 @@ details {
   height: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 6fr 0.5fr;
   grid-row-gap: 0.5em;
   grid-column-gap: 0.5em;
 }
@@ -42,6 +43,7 @@ details {
   grid-column-start: 1;
   grid-column-end: 4;
   color: #05a5bd;
+  padding: 2rem;
 }
 
 #one {
@@ -56,13 +58,6 @@ details {
 
 #three {
   background-color: #55bcb0;
-  padding: 10px, 10px, 10px, 10px;
-}
-
-#four {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  background-color: #61a780;
   padding: 10px, 10px, 10px, 10px;
 }
 
@@ -201,13 +196,6 @@ details {
   padding: 10px, 10px, 10px, 10px;
 }
 
-#four {
-  grid-column-start: 1;
-  grid-column-end: 4;
-  background-color: #61a780;
-  padding: 10px, 10px, 10px, 10px;
-}
-
 summary {
   border-radius: 1em;
   padding: 0.5em 0.5em 0.5em;
@@ -323,7 +311,3 @@ form {
 .answers select:focus {
   outline: none;
 }
-
-/* .masqueHaine {
-  margin-top: 74px;
-} */
