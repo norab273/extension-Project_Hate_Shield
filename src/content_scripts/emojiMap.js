@@ -98,16 +98,29 @@ dictionaryBadWords.set("vieille-peau", "🌸");
 dictionaryBadWords.set("youpin", "🌸");
 dictionaryBadWords.set("youpine", "🌸");
 
-browser.runtime.onMessage.addListener(addNew);
+browser.runtime.onMessage.addListener(replaceUserWordWithEmoji);
 
-addNew([]);
-function addNew(words) {
-  console.log("✽" + words);
+replaceUserWordWithEmoji([]);
+
+function replaceUserWordWithEmoji(words) {
   for (let word of words) {
     addToDictionary(word);
-    console.log("word ❓: " + word);
   }
   replaceText(document.body);
+}
+
+function handleMessage(request, sender, sendResponse) {
+  console.log("Message from the content script: " + request.body);
+  sendResponse({ response: "Response from background script" });
+}
+
+// The user can add new words to dictionnary
+
+function addToDictionary(word) {
+  if (word) {
+    dictionaryBadWords.set(word, "🌸");
+    regexBadWords.set(word, new RegExp("\\b" + word + "\\b", "gi"));
+  }
 }
 
 //function that replaces letters with accents
@@ -134,14 +147,7 @@ function getActiveTab() {
   return browser.tabs.query({ active: true, currentWindow: true });
 }
 
-// The user can add new words to dictionnary
-
-function addToDictionary(word) {
-  if (word) {
-    dictionaryBadWords.set(word, "🌸");
-    regexBadWords.set(word, new RegExp("\\b" + word + "\\b", "gi"));
-  }
-}
+//Replace Text
 
 function replaceText(node) {
   if (node.nodeType === Node.TEXT_NODE) {
@@ -167,6 +173,8 @@ function replaceText(node) {
 }
 
 replaceText(document.body);
+
+// Replaces text if modification of the DOM
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {

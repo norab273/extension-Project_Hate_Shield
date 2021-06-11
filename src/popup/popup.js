@@ -4,14 +4,14 @@ var inputWord = document.querySelector(".new-word input");
 var container = document.querySelector(".word-container");
 var addBtn = document.querySelector(".add");
 
-/*  add event listeners to buttons */
-
-addBtn.addEventListener("click", addUserWordtoStorage);
-
 /* generic error handler */
 function onError(error) {
   console.log(error);
 }
+
+/*  add event listeners to buttons */
+
+addBtn.addEventListener("click", addUserWordtoStorage);
 
 /* display previously-saved stored words on startup */
 
@@ -28,17 +28,7 @@ function initialize() {
   }, onError);
 }
 
-/* Add a word to the display, and storage */
-
-function getWordsFromStorageInArray(localStorage) {
-  try {
-    var words = JSON.parse(localStorage);
-    return words;
-  } catch (e) {
-    console.error("Parsing error:", e);
-    return [];
-  }
-}
+/* Add a word to the storage */
 
 function addUserWordtoStorage() {
   var word = inputWord.value;
@@ -53,6 +43,16 @@ function addUserWordToArrayAndStringify(word, localStorage) {
   words.push(word);
   var JSONwords = JSON.stringify(words);
   storeWordAndSendIt("userWords", JSONwords);
+}
+
+function getWordsFromStorageInArray(localStorage) {
+  try {
+    var words = JSON.parse(localStorage);
+    return words;
+  } catch (e) {
+    console.error("Parsing error:", e);
+    return [];
+  }
 }
 
 function storeWordAndSendIt(title, body) {
