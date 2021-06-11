@@ -98,20 +98,52 @@ dictionaryBadWords.set("vieille-peau", "🌸");
 dictionaryBadWords.set("youpin", "🌸");
 dictionaryBadWords.set("youpine", "🌸");
 
-browser.runtime.onMessage.addListener(replaceUserWordWithEmoji);
+let regexBadWords = new Map();
+
+// //function that replaces letters with accents
+// String.prototype.sansAccents = function () {
+//   return this.replace(/[ùûü]/g, "u")
+//     .replace(/[îï]/g, "i")
+//     .replace(/[àâä]/g, "a")
+//     .replace(/[ôö]/g, "o")
+//     .replace(/[éèêë]/g, "e")
+//     .replace(/ç/g, "c");
+// };
+
+// for (let element of dictionaryBadWords.keys()) {
+//   regexBadWords.set(
+//     element,
+//     new RegExp("\\b" + element.sansAccents() + "\\b", "gi")
+//   );
+// }
+
+browser.runtime.onMessage.addListener(handleMessage);
 
 replaceUserWordWithEmoji([]);
 
 function replaceUserWordWithEmoji(words) {
   for (let word of words) {
+    console.log("👈 word before " + word);
+    console.log("👈 array before " + words);
     addToDictionary(word);
+    console.log("👉 word after " + word);
+    console.log("👉 array after " + words);
   }
   replaceText(document.body);
 }
 
-function handleMessage(request, sender, sendResponse) {
-  console.log("Message from the content script: " + request.body);
-  sendResponse({ response: "Response from background script" });
+function handleMessage(request) {
+  console.log("❓");
+  console.log(" ⚠️ Message from the content script: " + request.word);
+  var wordsArray = JSON.parse(request.word);
+  console.log("array : " + wordsArray);
+  replaceUserWordWithEmoji(wordsArray);
+  // sendResponse({ response: "Response from background script" });
+}
+
+//gets active tab
+function getActiveTab() {
+  return browser.tabs.query({ active: true, currentWindow: true });
 }
 
 // The user can add new words to dictionnary
@@ -119,32 +151,12 @@ function handleMessage(request, sender, sendResponse) {
 function addToDictionary(word) {
   if (word) {
     dictionaryBadWords.set(word, "🌸");
-    regexBadWords.set(word, new RegExp("\\b" + word + "\\b", "gi"));
+    try {
+      regexBadWords.set(word, new RegExp("\\b" + word + "\\b", "gi"));
+    } catch (error) {
+      console.log("do nothing");
+    }
   }
-}
-
-//function that replaces letters with accents
-String.prototype.sansAccents = function () {
-  return this.replace(/[ùûü]/g, "u")
-    .replace(/[îï]/g, "i")
-    .replace(/[àâä]/g, "a")
-    .replace(/[ôö]/g, "o")
-    .replace(/[éèêë]/g, "e")
-    .replace(/ç/g, "c");
-};
-
-let regexBadWords = new Map();
-
-for (let element of dictionaryBadWords.keys()) {
-  regexBadWords.set(
-    element,
-    new RegExp("\\b" + element.sansAccents() + "\\b", "gi")
-  );
-}
-
-//gets active tab
-function getActiveTab() {
-  return browser.tabs.query({ active: true, currentWindow: true });
 }
 
 //Replace Text

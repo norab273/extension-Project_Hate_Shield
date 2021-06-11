@@ -39,7 +39,7 @@ function addUserWordtoStorage() {
 }
 
 function addUserWordToArrayAndStringify(word, localStorage) {
-  var words = getWordsFromStorageAndStoreInArray(localStorage);
+  var words = getWordsFromStorageInArray(localStorage);
   words.push(word);
   var JSONwords = JSON.stringify(words);
   storeWordAndSendIt("userWords", JSONwords);
@@ -53,14 +53,6 @@ function getWordsFromStorageInArray(localStorage) {
     console.error("Parsing error:", e);
     return [];
   }
-}
-
-function storeWordAndSendIt(title, body) {
-  var storingWord = browser.storage.local.set({ [title]: body });
-  storingWord.then(() => {
-    displayWord(title, body);
-    browser.tabs.sendMessage(currentTabId, { body });
-  }, onError);
 }
 
 //gets active tab
@@ -77,6 +69,15 @@ getActiveTab()
     currentTabId = tabs.find((tab) => tab.active).id;
   })
   .catch((err) => console.log(err));
+
+function storeWordAndSendIt(title, body) {
+  var storingWord = browser.storage.local.set({ [title]: body });
+  var hello = "Hello 🤓";
+  storingWord.then(() => {
+    displayWord(title, body);
+    browser.tabs.sendMessage(currentTabId, { word: body });
+  }, onError);
+}
 
 /* function to display a word in the word box */
 
