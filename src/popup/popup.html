@@ -15,46 +15,37 @@
   <body>
     <div class="popup">
       <div class="content">
-        <h2>Ecriture Inclusive 🌸</h2>
-        <div class="onoffswitch">
+        <h2>Masque la haine en ligne 🌸</h2>
+        <div class="onoffswitch2">
           <input
             type="checkbox"
-            name="onoffswitch"
-            class="onoffswitch-checkbox"
-            id="myonoffswitch"
+            name="emojiReplaceSwitch"
+            class="onoffswitch2-checkbox"
+            id="emojiReplaceSwitch"
             tabindex="0"
             checked
           />
-          <label class="onoffswitch-label" for="myonoffswitch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
+          <label class="onoffswitch2-label" for="emojiReplaceSwitch">
+            <span class="onoffswitch2-inner"></span>
+            <span class="onoffswitch2-switch"></span>
           </label>
         </div>
+
+        <div class="outer-wrapper">
+          <p>Tu peux ajouter d'autres mots à masquer :</p>
+          <div class="new-word">
+            <input type="text" />
+            <button class="add">Ajoute un mot</button>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="word-container"></div>
+        </div>
+
         <hr />
-        <h2>Masque la haine en ligne 🌸</h2>
-        <div class="onoffswitch2">
-          <input type="checkbox" name="onoffswitch2" class="onoffswitch2-checkbox" id="myonoffswitch2" tabindex="0" checked>
-          <label class="onoffswitch2-label" for="myonoffswitch2">
-              <span class="onoffswitch2-inner"></span>
-              <span class="onoffswitch2-switch"></span>
-          </label>
-      </div>
-  
 
-        <p>Tu peux ajouter d'autres mots à masquer :<p>
-        <div class="field">
-          <input id="word" type="text" placeholder="ajoute un mot" />
-          <button>ajouter</button>
-        </div>
-
-        <hr>
-        <h2>Masque une image 🌸</h2>
-        <div class="field">
-          <button>remplacer les images</button>
-        </div>
-        <hr>
         <h2>Réponds à la haine 🌸</h2>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <button id="copy">Copy</button>
         <select id="choose-answer">
           <option value="Choisis">Choisis une réponse :</option>
           <option
@@ -172,7 +163,7 @@
           </option>
         </select>
         <p>Tu peux maintenant coller la réponse où tu veux.</p>
-        <hr>
+        <hr />
         <h2>Signale la haine 🌸</h2>
         <form
           class="report"
@@ -182,21 +173,7 @@
         >
           <input type="submit" class="btn" value="Signaler" /> <br />
         </form>
-        <hr>
-        <header>
-        <span>Choisis ton curseur</span>
-        <!-- reset -->
-        <!-- <div class="close"></div> -->
-        <div class="reset">
-          <i class="uil uil-times"></i>
-        </div>
-      </header>
-      <div class="content">
-        <div class="cursor-container">
-          <button class="women"></button><button class="lgbt"></button
-          ><button class="handicap"></button><button class="blm"></button>
-        </div>
-        <hr>
+        <hr />
         <h2>Plus d'informations ici :</h2>
         <form
           class="settings"

@@ -1,111 +1,169 @@
-/* initialise variables theme & cursor */
-
-var cursorBtns = document.querySelectorAll(".cursor-container button");
-var themeBtns = document.querySelectorAll(".theme-container button");
-var wordPick = document.getElementById("word");
-var reset = document.querySelector(".reset");
-var cookieVal = { image: "", word: "", theme: "" };
+/* initialise variables */
 var settings = document.querySelector(".settings");
+var inputWord = document.querySelector(".new-word input");
+var container = document.querySelector(".word-container");
+var addBtn = document.querySelector(".add");
+var key = "userWords";
 
+/* generic error handler */
+function onError(error) {
+  console.log(error);
+}
+
+/*  add event listeners to buttons */
+
+addBtn.addEventListener("click", addUserWordtoStorage);
+
+/* display previously-saved stored words on startup */
+
+initialize();
+
+function initialize() {
+  var gettingAllStorageItems = browser.storage.local.get(null);
+  gettingAllStorageItems.then((results) => {
+    var wordsJSONstring = results[key];
+    var wordsArray = getWordsFromStorageInArray(wordsJSONstring);
+    // var wordKeys = Object.keys(results);
+    for (let word of wordsArray) {
+      displayWord(key, word);
+      storeWordAndSendIt(key, word);
+    }
+  }, onError);
+}
+
+/* Add a word to the storage */
+
+function addUserWordtoStorage() {
+  var word = inputWord.value;
+  var gettingWords = browser.storage.local.get(null);
+  gettingWords.then((result) => {
+    addUserWordToArrayAndStringify(word, result["userWords"]);
+  }, onError);
+}
+
+function addUserWordToArrayAndStringify(word, localStorage) {
+  var words = getWordsFromStorageInArray(localStorage);
+  words.push(word);
+  var JSONwords = JSON.stringify(words);
+  storeWordAndSendIt("userWords", JSONwords);
+}
+
+function getWordsFromStorageInArray(localStorage) {
+  try {
+    var words = JSON.parse(localStorage);
+    return words;
+  } catch (e) {
+    console.error("Parsing error:", e);
+    return [];
+  }
+}
+
+//gets active tab
 function getActiveTab() {
   return browser.tabs.query({ active: true, currentWindow: true });
 }
 
-/* add listener so that when clicked, button applies background to page HTML */
+let currentTabId;
 
-for (var i = 0; i < cursorBtns.length; i++) {
-  var imgName = cursorBtns[i].getAttribute("class");
-  var cursorImg = "url('images/" + imgName + ".png')";
-  cursorBtns[i].style.backgroundImage = cursorImg;
-  cursorBtns[i].style.backgroundRepeat = "no-repeat";
+getActiveTab()
+  .then((tabs) => {
+    console.log(tabs);
+    console.log(tabs.find((tab) => tab.active).id);
+    currentTabId = tabs.find((tab) => tab.active).id;
+  })
+  .catch((err) => console.log(err));
 
-  cursorBtns[i].onclick = function (e) {
-    getActiveTab().then((tabs) => {
-      var imgName = e.target.getAttribute("class");
-      var fullURL = browser.extension.getURL(
-        "popup/images/" + imgName + ".png"
-      );
-      browser.tabs.sendMessage(tabs[0].id, { image: fullURL });
-
-      cookieVal.image = fullURL;
-      browser.cookies.set({
-        url: tabs[0].url,
-        name: "appearancePicker",
-        value: JSON.stringify(cookieVal),
-      });
-    });
-  };
+function storeWordAndSendIt(key, body) {
+  var storingWord = browser.storage.local.set({ [key]: body });
+  storingWord.then(() => {
+    displayWord(key, body);
+    browser.tabs.sendMessage(currentTabId, { word: body });
+  }, onError);
 }
 
-/* apply theme to buttons */
-/* add listener so that when clicked, button applies theme to page HTML */
+/* function to display a word in the word box */
 
-// for (var i = 0; i < themeBtns.length; i++) {
-//   var themeName = themeBtns[i].getAttribute("class");
-//   var themeImg = "url('images/" + themeName + ".png')";
-//   themeBtns[i].style.backgroundImage = themeImg;
+function displayWord(key, body) {
+  /* create word display box */
+  var word = document.createElement("div");
+  var wordDisplay = document.createElement("div");
+  var wordPara = document.createElement("p");
+  var deleteBtn = document.createElement("button");
+  var clearFix = document.createElement("div");
 
-//   themeBtns[i].onclick = function (e) {
-//     getActiveTab().then((tabs) => {
-//       var themeName = e.target.getAttribute("class");
-//       var themeURL = browser.extension.getURL(
-//         "popup/images/" + themeName + ".png"
-//       );
-//       browser.tabs.sendMessage(tabs[0].id, { tab: themeURL });
+  word.setAttribute("class", "word");
 
-//       cookieVal.tab = themeURL;
-//       browser.cookies.set({
-//         url: tabs[0].url,
-//         name: "appearancePicker",
-//         value: JSON.stringify(cookieVal),
-//       });
-//     });
-//   };
-// }
+  wordPara.textContent = body;
+  deleteBtn.setAttribute("class", "delete");
+  deleteBtn.textContent = "Supprimer";
+  clearFix.setAttribute("class", "clearfix");
 
-/* apply chosen word to HTML background */
+  wordDisplay.appendChild(wordPara);
+  wordDisplay.appendChild(deleteBtn);
+  wordDisplay.appendChild(clearFix);
 
-wordPick.onchange = function (e) {
-  getActiveTab().then((tabs) => {
-    var currWord = e.target.value;
-    browser.tabs.sendMessage(tabs[0].id, { word: currWord });
+  word.appendChild(wordDisplay);
 
-    cookieVal.word = currWord;
-    browser.cookies.set({
-      url: tabs[0].url,
-      name: "appearancePicker",
-      value: JSON.stringify(cookieVal),
-    });
+  /* set up listener for the delete functionality */
+
+  deleteBtn.addEventListener("click", (e) => {
+    const eventTarget = e.target;
+    eventTarget.parentNode.parentNode.parentNode.removeChild(
+      eventTarget.parentNode.parentNode
+    );
+    browser.storage.local.remove(key);
   });
-};
 
-/* reset background */
+  /* create word edit box */
+  var wordEdit = document.createElement("div");
+  var wordBodyEdit = document.createElement("textarea");
+  var clearFix2 = document.createElement("div");
 
-reset.onclick = function () {
-  getActiveTab().then((tabs) => {
-    browser.tabs.sendMessage(tabs[0].id, { reset: true });
+  var updateBtn = document.createElement("button");
+  var cancelBtn = document.createElement("button");
 
-    cookieVal = { image: "", word: "" };
-    browser.cookies.remove({
-      url: tabs[0].url,
-      name: "appearancePicker",
-    });
-  });
-};
+  updateBtn.setAttribute("class", "update");
+  updateBtn.textContent = "Update word";
+  cancelBtn.setAttribute("class", "cancel");
+  cancelBtn.textContent = "Cancel update";
 
-/* Report cookie changes to the console */
+  wordEdit.appendChild(wordBodyEdit);
+  wordBodyEdit.textContent = body;
+  wordEdit.appendChild(updateBtn);
+  wordEdit.appendChild(cancelBtn);
 
-// browser.cookies.onChanged.addListener((changeInfo) => {
-//   console.log(`Cookie changed:\n
-//               * Cookie: ${JSON.stringify(changeInfo.cookie)}\n
-//               * Cause: ${changeInfo.cause}\n
-//               * Removed: ${changeInfo.removed}`);
+  wordEdit.appendChild(clearFix2);
+  clearFix2.setAttribute("class", "clearfix");
+
+  word.appendChild(wordEdit);
+
+  container.appendChild(word);
+  wordEdit.style.display = "none";
+}
+
+//COPY/PASTE ANSWER TO HATE
+
+function copy() {
+  var copyText = document.getElementById("#choose-answer");
+  var value = copyText.value;
+  copyText.select();
+  document.execCommand("copy");
+}
+
+document.querySelector("#choose-answer").addEventListener("change", copy);
+// const selectElement = document.querySelector("#choose-answer");
+
+// selectElement.addEventListener("change", (event) => {
+//   selectElement.select();
+//   try {
+//     var result = document.execCommand("copy");
+//     if (result) {
+//       // La copie a réussi
+//       alert("Copié !");
+//     }
+//   } catch (err) {
+//     // Une erreur est surevnue lors de la tentative de copie
+//     alert(err);
+//   }
+//   // result.textContent = `You like ${event.target.value}`;
 // });
-
-$("#choose-answer").on("change", function () {
-  var value = `<input value="${$(this).val()}" id="selVal" />`;
-  $(value).insertAfter("#choose-answer");
-  $("#selVal").select();
-  document.execCommand("Copy");
-  $("body").find("#selVal").remove();
-});
