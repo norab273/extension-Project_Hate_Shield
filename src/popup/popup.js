@@ -140,30 +140,3 @@ function displayWord(key, body) {
   container.appendChild(word);
   wordEdit.style.display = "none";
 }
-
-//COPY/PASTE ANSWER TO HATE
-
-function copy() {
-  var copyText = document.getElementById("#choose-answer");
-  var value = copyText.value;
-  copyText.select();
-  document.execCommand("copy");
-}
-
-document.querySelector("#choose-answer").addEventListener("change", copy);
-// const selectElement = document.querySelector("#choose-answer");
-
-// selectElement.addEventListener("change", (event) => {
-//   selectElement.select();
-//   try {
-//     var result = document.execCommand("copy");
-//     if (result) {
-//       // La copie a réussi
-//       alert("Copié !");
-//     }
-//   } catch (err) {
-//     // Une erreur est surevnue lors de la tentative de copie
-//     alert(err);
-//   }
-//   // result.textContent = `You like ${event.target.value}`;
-// });
