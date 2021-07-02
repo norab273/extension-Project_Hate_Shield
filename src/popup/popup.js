@@ -19,10 +19,11 @@ addBtn.addEventListener("click", addUserWordtoStorage);
 initialize();
 
 function initialize() {
+  console.log("😈 initialize pop-up.js");
   var gettingAllStorageItems = browser.storage.local.get(null);
   gettingAllStorageItems.then((results) => {
     var wordsJSONstring = results[key];
-    var wordsArray = getWordsFromStorageInArray(wordsJSONstring);
+    var wordsArray = Parse(wordsJSONstring);
     // var wordKeys = Object.keys(results);
     for (let word of wordsArray) {
       displayWord(key, word);
@@ -42,13 +43,17 @@ function addUserWordtoStorage() {
 }
 
 function addUserWordToArrayAndStringify(word, localStorage) {
-  var words = getWordsFromStorageInArray(localStorage);
+  var words = Parse(localStorage);
+  console.log("👽 words : " + words);
   words.push(word);
+  console.log("⛵️ words after push : " + words);
   var JSONwords = JSON.stringify(words);
+  console.log("⚓️ JSONwords : " + JSONwords);
   storeWordAndSendIt("userWords", JSONwords);
 }
 
-function getWordsFromStorageInArray(localStorage) {
+function Parse(localStorage) {
+  console.log("😻 local storage:" + localStorage);
   try {
     var words = JSON.parse(localStorage);
     return words;
@@ -75,6 +80,7 @@ getActiveTab()
 
 function storeWordAndSendIt(key, body) {
   var storingWord = browser.storage.local.set({ [key]: body });
+  console.log("⛺️ storingWord" + storingWord);
   storingWord.then(() => {
     displayWord(key, body);
     browser.tabs.sendMessage(currentTabId, { word: body });

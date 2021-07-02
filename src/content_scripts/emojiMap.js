@@ -117,6 +117,21 @@ for (let element of dictionaryBadWords.keys()) {
   );
 }
 
+initialize();
+
+function initialize() {
+  console.log("👺 initialize emoji-map.js");
+  var gettingAllStorageItems = browser.storage.local.get(null);
+  gettingAllStorageItems.then((results) => {
+    var wordsJSONstring = results[key];
+    var wordsArray = Parse(wordsJSONstring);
+    // var wordKeys = Object.keys(results);
+    for (let word of wordsArray) {
+      addToDictionary(word);
+    }
+  }, onError);
+}
+
 browser.runtime.onMessage.addListener(handleMessage);
 
 replaceUserWordWithEmoji([]);
